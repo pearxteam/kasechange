@@ -2,7 +2,7 @@ val multigradleVersion: String by settings
 val kotlinVersion: String by settings
 val githubReleaseVersion: String by settings
 
-rootProject.name = "kcasechange"
+rootProject.name = "kasechange"
 
 pluginManagement {
     resolutionStrategy {
