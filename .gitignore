@@ -1,0 +1,8 @@
+.gradle
+.idea
+*.iml
+build
+run
+node_modules
+package-lock.json
+out
