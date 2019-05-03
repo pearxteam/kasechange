@@ -9,7 +9,7 @@ pipeline {
             }
         }
         stage('deploy-develop') {
-            when { branch '*-develop' }
+            when { branch 'develop' }
             environment {
                 PEARX_REPO = credentials('pearx-repo-user')
             }
@@ -19,7 +19,7 @@ pipeline {
         }
 
         stage('deploy-release') {
-            when { branch '*-master' }
+            when { branch 'master' }
             environment {
                 PEARX_REPO = credentials('pearx-repo-user')
                 GITHUB_ACCESS_TOKEN = credentials('github-release-token')
