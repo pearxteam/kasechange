@@ -29,5 +29,11 @@ pipeline {
             }
         }
     }
-    post { always { ciSkip 'postProcess' } }
+    post {
+        always {
+            ciSkip 'postProcess'
+            junit 'build/test-results-prefixed/**/*.xml'
+            jacoco classPattern: 'build/classes', execPattern: 'build/jacoco/*.exec', sourcePattern: 'src'
+        }
+    }
 }
