@@ -19,7 +19,7 @@ enum class CaseFormat(private val wordUppercase: Boolean, private val wordSplitt
     CAPITALIZED_SPACE(false, ' ', true, true),
     /* lower space case */
     LOWER_SPACE(false, ' '),
-    /* SCREAMING.DOT.CASE */
+    /* UPPER.DOT.CASE */
     UPPER_DOT(true, '.'),
     /* dot.case */
     LOWER_DOT(false, '.');
