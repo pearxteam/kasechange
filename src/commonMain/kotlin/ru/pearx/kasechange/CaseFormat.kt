@@ -1,18 +1,28 @@
 package ru.pearx.kasechange
 
-enum class CaseFormat(private val wordUppercase: Boolean, private val wordSplitter: Char?, private val firstLetterUppercase: Boolean = false, private val startUppercase: Boolean = false) {
+enum class CaseFormat(private val wordUppercase: Boolean, private val wordSplitter: Char?, private val wordCapitalize: Boolean = false, private val firstWordCapitalize: Boolean = false) {
     /* SCREAMING_SNAKE_CASE */
     UPPER_UNDERSCORE(true, '_'),
     /* snake_case */
     LOWER_UNDERSCORE(false, '_'),
     /* PascalCase */
-    UPPER_CAMEL(false, null, true, true),
+    CAPITALIZED_CAMEL(false, null, true, true),
     /* camelCase */
-    LOWER_CAMEL(false, null, true, false),
+    CAMEL(false, null, true, false),
     /* TRAIN-CASE */
     UPPER_HYPHEN(true, '-'),
     /* kebab-case */
-    LOWER_HYPHEN(false, '-');
+    LOWER_HYPHEN(false, '-'),
+    /* UPPER SPACE CASE */
+    UPPER_SPACE(true, ' '),
+    /* Title Case */
+    CAPITALIZED_SPACE(false, ' ', true, true),
+    /* lower space case */
+    LOWER_SPACE(false, ' '),
+    /* SCREAMING.DOT.CASE */
+    UPPER_DOT(true, '.'),
+    /* dot.case */
+    LOWER_DOT(false, '.');
 
     fun formatTo(appendable: Appendable, words: Iterable<String>) {
         appendable.apply {
@@ -23,11 +33,11 @@ enum class CaseFormat(private val wordUppercase: Boolean, private val wordSplitt
                     wordUppercase -> word.toUpperCase()
                     index == 0 -> {
                         when {
-                            startUppercase -> word.toLowerCase().capitalize()
+                            firstWordCapitalize -> word.toLowerCase().capitalize()
                             else -> word.toLowerCase()
                         }
                     }
-                    firstLetterUppercase -> word.toLowerCase().capitalize()
+                    wordCapitalize -> word.toLowerCase().capitalize()
                     else -> word.toLowerCase()
                 })
             }
