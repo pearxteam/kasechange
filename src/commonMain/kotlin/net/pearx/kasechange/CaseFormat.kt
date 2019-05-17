@@ -1,4 +1,4 @@
-package ru.pearx.kasechange
+package net.pearx.kasechange
 
 enum class CaseFormat(private val wordUppercase: Boolean, private val wordSplitter: Char?, private val wordCapitalize: Boolean = false, private val firstWordCapitalize: Boolean = false) {
     /* SCREAMING_SNAKE_CASE */

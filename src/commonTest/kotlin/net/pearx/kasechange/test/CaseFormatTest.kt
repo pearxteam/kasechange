@@ -1,6 +1,6 @@
-package ru.pearx.kasechange.test
+package net.pearx.kasechange.test
 
-import ru.pearx.kasechange.CaseFormat
+import net.pearx.kasechange.CaseFormat
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

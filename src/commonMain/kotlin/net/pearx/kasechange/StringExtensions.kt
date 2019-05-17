@@ -1,4 +1,4 @@
-package ru.pearx.kasechange
+package net.pearx.kasechange
 
 fun String.toCase(format: CaseFormat) = format.format(splitToWords())
 

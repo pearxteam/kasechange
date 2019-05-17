@@ -1,4 +1,4 @@
-package ru.pearx.kasechange
+package net.pearx.kasechange
 
 internal actual fun Char.isUpperCasePlatform(): Boolean = toUpperCase() == this && toLowerCase() != this
 

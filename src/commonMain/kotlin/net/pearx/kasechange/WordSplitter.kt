@@ -1,4 +1,4 @@
-package ru.pearx.kasechange
+package net.pearx.kasechange
 
 private val CHARACTERS_TO_SPLIT = arrayOf(' ', '-', '_', '.')
 
