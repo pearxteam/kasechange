@@ -1,5 +1,5 @@
 import com.github.breadmoirai.githubreleaseplugin.GithubReleaseExtension
-import ru.pearx.multigradle.util.MultiGradleExtension
+import net.pearx.multigradle.util.MultiGradleExtension
 
 val projectChangelog: String by project
 
@@ -9,13 +9,13 @@ val githubAccessToken: String? by project
 val devBuildNumber: String? by project
 
 plugins {
-    id("ru.pearx.multigradle.simple.project")
+    id("net.pearx.multigradle.simple.project")
     id("kotlin-gradle-plugin") apply (false)
     id("com.github.breadmoirai.github-release")
     `maven-publish`
 }
 
-group = "ru.pearx"
+group = "net.pearx"
 
 configure<MultiGradleExtension> {
     if(devBuildNumber != null) {
@@ -34,12 +34,12 @@ configure<PublishingExtension> {
         maven {
             pearxCredentials()
             name = "develop"
-            url = uri("https://repo.pearx.ru/maven2/develop/")
+            url = uri("https://repo.pearx.net/maven2/develop/")
         }
         maven {
             pearxCredentials()
             name = "release"
-            url = uri("https://repo.pearx.ru/maven2/release/")
+            url = uri("https://repo.pearx.net/maven2/release/")
         }
     }
 }

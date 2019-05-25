@@ -9,7 +9,7 @@ pluginManagement {
         eachPlugin {
             if (requested.id.id == "kotlin-gradle-plugin")
                 useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-            if (requested.id.id.startsWith("ru.pearx.multigradle"))
+            if (requested.id.id.startsWith("net.pearx.multigradle"))
                 useVersion(multigradleVersion)
             if(requested.id.id.startsWith("com.github.breadmoirai.github-release"))
                 useVersion(githubReleaseVersion)
