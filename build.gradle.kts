@@ -15,7 +15,7 @@ plugins {
     `maven-publish`
 }
 
-group = "net.pearx"
+group = "net.pearx.kasechange"
 
 configure<MultiGradleExtension> {
     if(devBuildNumber != null) {
