@@ -12,9 +12,12 @@ pipeline {
             when { branch 'develop' }
             environment {
                 PEARX_REPO = credentials('pearx-repo-user')
+                PGP_KEY_PUBID = credentials('pgp-key-pubid')
+                PGP_KEY_PASSWORD = credentials('pgp-key-password')
+                PGP_KEY_PRIVATE = credentials('pgp-key-private')
             }
             steps {
-                sh "./gradlew publishDevelop -PpearxRepoUsername=${PEARX_REPO_USR} -PpearxRepoPassword=${PEARX_REPO_PSW} -PdevBuildNumber=${BUILD_NUMBER}"
+                sh "./gradlew publishDevelop -PpearxRepoUsername=${PEARX_REPO_USR} -PpearxRepoPassword=${PEARX_REPO_PSW} -PdevBuildNumber=${BUILD_NUMBER} -Psigning.keyId=${PGP_KEY_PUBID} -Psigning.password=\"${PGP_KEY_PASSWORD}\" -Psigning.secretKeyRingFile=\"${PGP_KEY_PRIVATE}\""
             }
         }
 

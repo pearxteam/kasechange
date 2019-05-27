@@ -13,6 +13,7 @@ plugins {
     id("kotlin-gradle-plugin") apply (false)
     id("com.github.breadmoirai.github-release")
     `maven-publish`
+    `signing`
 }
 
 group = "net.pearx.kasechange"
@@ -42,6 +43,10 @@ configure<PublishingExtension> {
             url = uri("https://repo.pearx.net/maven2/release/")
         }
     }
+}
+
+configure<SigningExtension> {
+    sign(publishing.publications)
 }
 
 configure<GithubReleaseExtension> {
