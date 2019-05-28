@@ -13,13 +13,13 @@ plugins {
     id("kotlin-gradle-plugin") apply (false)
     id("com.github.breadmoirai.github-release")
     `maven-publish`
-    `signing`
+    signing
 }
 
 group = "net.pearx.kasechange"
 
 configure<MultiGradleExtension> {
-    if(devBuildNumber != null) {
+    if (devBuildNumber != null) {
         projectVersion = "$projectVersion-dev-$devBuildNumber"
     }
 }
