@@ -26,9 +26,13 @@ pipeline {
             environment {
                 PEARX_REPO = credentials('pearx-repo-user')
                 GITHUB_ACCESS_TOKEN = credentials('github-release-token')
+                PGP_KEY_PUBID = credentials('pgp-key-pubid')
+                PGP_KEY_PASSWORD = credentials('pgp-key-password')
+                PGP_KEY_PRIVATE = credentials('pgp-key-private')
+                SONATYPE_OSS = credentials('sonatype-oss-token')
             }
             steps {
-                sh "./gradlew publishRelease -PpearxRepoUsername=${PEARX_REPO_USR} -PpearxRepoPassword=${PEARX_REPO_PSW} -PgithubAccessToken=${GITHUB_ACCESS_TOKEN}"
+                sh "./gradlew publishRelease -PpearxRepoUsername=${PEARX_REPO_USR} -PpearxRepoPassword=${PEARX_REPO_PSW} -PsonatypeOssUsername=\"${SONATYPE_OSS_USR}\" -PsonatypeOssPassword=\"${SONATYPE_OSS_PSW}\" -PgithubAccessToken=${GITHUB_ACCESS_TOKEN} -Psigning.keyId=${PGP_KEY_PUBID} -Psigning.password=\"${PGP_KEY_PASSWORD}\" -Psigning.secretKeyRingFile=\"${PGP_KEY_PRIVATE}\""
             }
         }
     }

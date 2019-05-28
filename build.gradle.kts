@@ -6,6 +6,8 @@ val projectDescription: String by project
 
 val pearxRepoUsername: String? by project
 val pearxRepoPassword: String? by project
+val sonatypeOssUsername: String? by project
+val sonatypeOssPassword: String? by project
 val githubAccessToken: String? by project
 val devBuildNumber: String? by project
 
@@ -69,21 +71,29 @@ configure<PublishingExtension> {
         }
     }
     repositories {
-        fun AuthenticationSupported.pearxCredentials() {
+        maven {
             credentials {
                 username = pearxRepoUsername
                 password = pearxRepoPassword
             }
-        }
-        maven {
-            pearxCredentials()
-            name = "develop"
+            name = "pearx-repo-develop"
             url = uri("https://repo.pearx.net/maven2/develop/")
         }
         maven {
-            pearxCredentials()
-            name = "release"
+            credentials {
+                username = pearxRepoUsername
+                password = pearxRepoPassword
+            }
+            name = "pearx-repo-release"
             url = uri("https://repo.pearx.net/maven2/release/")
+        }
+        maven {
+            credentials {
+                username = sonatypeOssUsername
+                password = sonatypeOssPassword
+            }
+            name = "sonatype-oss-release"
+            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
         }
     }
 }
@@ -104,11 +114,11 @@ configure<GithubReleaseExtension> {
 tasks {
     register("publishDevelop") {
         group = "publishing"
-        dependsOn(withType<PublishToMavenRepository>().matching { it.repository == project.the<PublishingExtension>().repositories["develop"] })
+        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-develop") })
     }
     register("publishRelease") {
         group = "publishing"
-        dependsOn(withType<PublishToMavenRepository>().matching { it.repository == project.the<PublishingExtension>().repositories["release"] })
+        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-release") })
         dependsOn(named("githubRelease"))
     }
 }
