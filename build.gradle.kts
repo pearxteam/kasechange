@@ -2,6 +2,7 @@ import com.github.breadmoirai.githubreleaseplugin.GithubReleaseExtension
 import net.pearx.multigradle.util.MultiGradleExtension
 
 val projectChangelog: String by project
+val projectDescription: String by project
 
 val pearxRepoUsername: String? by project
 val pearxRepoPassword: String? by project
@@ -17,6 +18,7 @@ plugins {
 }
 
 group = "net.pearx.kasechange"
+description = projectDescription
 
 configure<MultiGradleExtension> {
     if (devBuildNumber != null) {
@@ -25,6 +27,47 @@ configure<MultiGradleExtension> {
 }
 
 configure<PublishingExtension> {
+    publications.withType<MavenPublication> {
+        pom {
+            description.set(projectDescription)
+            url.set("https://github.com/pearxteam/kasechange")
+            licenses {
+                license {
+                    name.set("Mozilla Public License, Version 2.0")
+                    url.set("https://mozilla.org/MPL/2.0/")
+                    distribution.set("repo")
+                }
+            }
+            organization {
+                name.set("PearX Team")
+                url.set("https://pearx.net/")
+            }
+            developers {
+                developer {
+                    id.set("mrAppleXZ")
+                    name.set("mrAppleXZ")
+                    email.set("me@pearx.net")
+                    url.set("https://pearx.net/members/mrapplexz")
+                    organization.set("PearX Team")
+                    organizationUrl.set("https://pearx.net/")
+                    roles.set(listOf("developer"))
+                    timezone.set("Asia/Yekaterinburg")
+                }
+            }
+            scm {
+                connection.set("scm:git:git://github.com/pearxteam/kasechange")
+                developerConnection.set("scm:git:git://github.com/pearxteam/kasechange")
+            }
+            issueManagement {
+                system.set("GitHub")
+                url.set("https://github.com/pearxteam/kasechange/issues")
+            }
+            ciManagement {
+                system.set("Jenkins")
+                url.set("https://ci.pearx.net/job/pearxteam/job/kasechange")
+            }
+        }
+    }
     repositories {
         fun AuthenticationSupported.pearxCredentials() {
             credentials {
