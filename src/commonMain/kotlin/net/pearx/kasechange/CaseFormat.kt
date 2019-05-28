@@ -7,30 +7,36 @@
 
 package net.pearx.kasechange
 
+/**
+ * An enumeration that represents a case format that can be used to join a collection of words into one string.
+ */
 enum class CaseFormat(private val wordUppercase: Boolean, private val wordSplitter: Char?, private val wordCapitalize: Boolean = false, private val firstWordCapitalize: Boolean = false) {
-    /* SCREAMING_SNAKE_CASE */
+    /** SCREAMING_SNAKE_CASE */
     UPPER_UNDERSCORE(true, '_'),
-    /* snake_case */
+    /** snake_case */
     LOWER_UNDERSCORE(false, '_'),
-    /* PascalCase */
+    /** PascalCase */
     CAPITALIZED_CAMEL(false, null, true, true),
-    /* camelCase */
+    /** camelCase */
     CAMEL(false, null, true, false),
-    /* TRAIN-CASE */
+    /** TRAIN-CASE */
     UPPER_HYPHEN(true, '-'),
-    /* kebab-case */
+    /** kebab-case */
     LOWER_HYPHEN(false, '-'),
-    /* UPPER SPACE CASE */
+    /** UPPER SPACE CASE */
     UPPER_SPACE(true, ' '),
-    /* Title Case */
+    /** Title Case */
     CAPITALIZED_SPACE(false, ' ', true, true),
-    /* lower space case */
+    /** lower space case */
     LOWER_SPACE(false, ' '),
-    /* UPPER.DOT.CASE */
+    /** UPPER.DOT.CASE */
     UPPER_DOT(true, '.'),
-    /* dot.case */
+    /** dot.case */
     LOWER_DOT(false, '.');
 
+    /**
+     * Joins [words] using this case format, appending the result to [appendable]
+     */
     fun formatTo(appendable: Appendable, words: Iterable<String>) {
         appendable.apply {
             for ((index, word) in words.withIndex()) {
@@ -51,9 +57,18 @@ enum class CaseFormat(private val wordUppercase: Boolean, private val wordSplitt
         }
     }
 
+    /**
+     * Joins [words] using this case format, appending the result to [appendable]
+     */
     fun formatTo(appendable: Appendable, vararg words: String) = formatTo(appendable, words.asIterable())
 
+    /**
+     * Joins [words] using this case format and returns the result.
+     */
     fun format(words: Iterable<String>): String = StringBuilder().also { formatTo(it, words) }.toString()
 
+    /**
+     * Joins [words] using this case format and returns the result.
+     */
     fun format(vararg words: String) = format(words.asIterable())
 }

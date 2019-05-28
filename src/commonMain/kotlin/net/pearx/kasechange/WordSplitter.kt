@@ -7,15 +7,27 @@
 
 package net.pearx.kasechange
 
-private val CHARACTERS_TO_SPLIT = arrayOf(' ', '-', '_', '.')
+private val BOUNDARIES = arrayOf(' ', '-', '_', '.')
 
 private fun StringBuilder.toStringAndClear() = toString().also { clear() }
 
+/**
+ * Splits a string to multiple words by using the following rules:
+ * - All ' ', '-', '_', '.' characters are considered word boundaries.
+ * - If a lowercase character is followed by an uppercase character, a word boundary is considered to be prior to the uppercase character.
+ * - If multiple uppercase characters are followed by a lowercase character, a word boundary is considered to be prior to the last uppercase character.
+ *
+ * Examples:
+ * XMLBufferedReader => XML|Buffered|Reader
+ * newFile => new|File
+ * net.pearx.lib => net|pearx|lib
+ * NewDataClass => New|Data|Class
+ */
 fun String.splitToWords(): List<String> = mutableListOf<String>().also { list ->
     val word = StringBuilder()
     for (index in 0 until length) {
         val char = this[index]
-        if (char in CHARACTERS_TO_SPLIT) {
+        if (char in BOUNDARIES) {
             list.add(word.toStringAndClear())
         }
         else {
