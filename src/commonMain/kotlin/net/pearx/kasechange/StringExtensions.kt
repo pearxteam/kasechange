@@ -10,7 +10,7 @@ package net.pearx.kasechange
 /**
  * Converts a string to specific [caseFormat] using the word splitting rules defined in [splitToWords].
  */
-fun String.toCase(caseFormat: CaseFormat) = caseFormat.format(splitToWords())
+fun String.toCase(caseFormat: CaseFormat) = caseFormat.format(this)
 
 /** Converts a string to SCREAMING_SNAKE_CASE using the word splitting rules defined in [splitToWords]. */
 fun String.toScreamingSnakeCase() = toCase(CaseFormat.UPPER_UNDERSCORE)
@@ -27,7 +27,7 @@ fun String.toKebabCase() = toCase(CaseFormat.LOWER_HYPHEN)
 /** Converts a string to UPPER SPACE CASE using the word splitting rules defined in [splitToWords]. */
 fun String.toUpperSpaceCase() = toCase(CaseFormat.UPPER_SPACE)
 /** Converts a string to Title Case using the word splitting rules defined in [splitToWords]. */
-fun String.toTitleCase() = toCase(CaseFormat.UPPER_SPACE)
+fun String.toTitleCase() = toCase(CaseFormat.CAPITALIZED_SPACE)
 /** Converts a string to lower space case using the word splitting rules defined in [splitToWords]. */
 fun String.toLowerSpaceCase() = toCase(CaseFormat.LOWER_SPACE)
 /** Converts a string to UPPER.DOT.CASE using the word splitting rules defined in [splitToWords]. */

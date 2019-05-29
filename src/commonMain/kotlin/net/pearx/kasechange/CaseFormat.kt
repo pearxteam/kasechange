@@ -71,4 +71,9 @@ enum class CaseFormat(private val wordUppercase: Boolean, private val wordSplitt
      * Joins [words] using this case format and returns the result.
      */
     fun format(vararg words: String) = format(words.asIterable())
+
+    /**
+     * Converts a string to this [CaseFormat] using the word splitting rules defined in [splitToWords]
+     */
+    fun format(string: String) = format(string.splitToWords())
 }
