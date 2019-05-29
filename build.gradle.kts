@@ -28,6 +28,21 @@ configure<MultiGradleExtension> {
     }
 }
 
+tasks {
+    register("publishDevelop") {
+        group = "publishing"
+        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-develop") })
+    }
+    register("publishRelease") {
+        group = "publishing"
+        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-release") })
+        dependsOn(named("githubRelease"))
+    }
+    register<Jar>("emptyJavadoc") {
+        archiveClassifier.set("javadoc")
+    }
+}
+
 configure<PublishingExtension> {
     publications.withType<MavenPublication> {
         pom {
@@ -57,6 +72,7 @@ configure<PublishingExtension> {
                 }
             }
             scm {
+                url.set("https://github.com/pearxteam/kasechange")
                 connection.set("scm:git:git://github.com/pearxteam/kasechange")
                 developerConnection.set("scm:git:git://github.com/pearxteam/kasechange")
             }
@@ -69,6 +85,7 @@ configure<PublishingExtension> {
                 url.set("https://ci.pearx.net/job/pearxteam/job/kasechange")
             }
         }
+        artifact(tasks["emptyJavadoc"])
     }
     repositories {
         maven {
@@ -109,16 +126,4 @@ configure<GithubReleaseExtension> {
     setTargetCommitish("master")
     setBody(projectChangelog)
     //setReleaseAssets((publishing.publications["maven"] as MavenPublication).artifacts.map { it.file })
-}
-
-tasks {
-    register("publishDevelop") {
-        group = "publishing"
-        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-develop") })
-    }
-    register("publishRelease") {
-        group = "publishing"
-        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-release") })
-        dependsOn(named("githubRelease"))
-    }
 }
