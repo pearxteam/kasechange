@@ -46,6 +46,7 @@ tasks {
 configure<PublishingExtension> {
     publications.withType<MavenPublication> {
         pom {
+            name.set(artifactId)
             description.set(projectDescription)
             url.set("https://github.com/pearxteam/kasechange")
             licenses {
