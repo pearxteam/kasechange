@@ -2,6 +2,10 @@
 [![Develop Build Status](https://ci.pearx.net/job/pearxteam/job/kasechange/job/develop/badge/icon)](https://ci.pearx.net/job/pearxteam/job/kasechange/job/develop/)
 [![Release Build Status](https://ci.pearx.net/job/pearxteam/job/kasechange/job/master/badge/icon)](https://ci.pearx.net/job/pearxteam/job/kasechange/job/master/)
 
+Metadata: [![Maven Central](https://img.shields.io/maven-central/v/net.pearx.kasechange/kasechange-metadata.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22net.pearx.kasechange%22%20AND%20a:%22kasechange-metadata%22)
+JVM: [![Maven Central](https://img.shields.io/maven-central/v/net.pearx.kasechange/kasechange-metadata.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22net.pearx.kasechange%22%20AND%20a:%22kasechange-jvm%22)
+JS: [![Maven Central](https://img.shields.io/maven-central/v/net.pearx.kasechange/kasechange-metadata.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22net.pearx.kasechange%22%20AND%20a:%22kasechange-js%22)
+
 # KaseChange
 Multiplatform Kotlin library to convert strings between various case formats
 
