@@ -18,10 +18,10 @@ private fun StringBuilder.toStringAndClear() = toString().also { clear() }
  * - If multiple uppercase characters are followed by a lowercase character, a word boundary is considered to be prior to the last uppercase character.
  *
  * Examples:
- * XMLBufferedReader => XML|Buffered|Reader
- * newFile => new|File
- * net.pearx.lib => net|pearx|lib
- * NewDataClass => New|Data|Class
+ * - XMLBufferedReader => XML|Buffered|Reader
+ * - newFile => new|File
+ * - net.pearx.lib => net|pearx|lib
+ * - NewDataClass => New|Data|Class
  */
 fun String.splitToWords(): List<String> = mutableListOf<String>().also { list ->
     val word = StringBuilder()

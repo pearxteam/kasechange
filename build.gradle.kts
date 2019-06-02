@@ -28,21 +28,6 @@ configure<MultiGradleExtension> {
     }
 }
 
-tasks {
-    register("publishDevelop") {
-        group = "publishing"
-        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-develop") })
-    }
-    register("publishRelease") {
-        group = "publishing"
-        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-release") })
-        dependsOn(named("githubRelease"))
-    }
-    register<Jar>("emptyJavadoc") {
-        archiveClassifier.set("javadoc")
-    }
-}
-
 configure<PublishingExtension> {
     publications.withType<MavenPublication> {
         pom {
@@ -86,7 +71,6 @@ configure<PublishingExtension> {
                 url.set("https://ci.pearx.net/job/pearxteam/job/kasechange")
             }
         }
-        artifact(tasks["emptyJavadoc"])
     }
     repositories {
         maven {
@@ -113,6 +97,18 @@ configure<PublishingExtension> {
             name = "sonatype-oss-release"
             url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
         }
+    }
+}
+
+tasks {
+    register("publishDevelop") {
+        group = "publishing"
+        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-develop") })
+    }
+    register("publishRelease") {
+        group = "publishing"
+        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-release") })
+        dependsOn(named("githubRelease"))
     }
 }
 
