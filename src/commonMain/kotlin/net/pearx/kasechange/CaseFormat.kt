@@ -7,6 +7,8 @@
 
 package net.pearx.kasechange
 
+import net.pearx.kasechange.splitter.splitToWords
+
 /**
  * An enumeration that represents a case format that can be used to join a collection of words into one string.
  */

@@ -5,7 +5,10 @@
  * You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-package net.pearx.kasechange
+package net.pearx.kasechange.splitter
+
+import net.pearx.kasechange.isLowerCasePlatform
+import net.pearx.kasechange.isUpperCasePlatform
 
 private val BOUNDARIES = arrayOf(' ', '-', '_', '.')
 
