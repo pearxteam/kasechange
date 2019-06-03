@@ -48,5 +48,5 @@ Multiplatform Kotlin library to convert strings between various case formats
 ```
  - Splitting a string into words:
 ```kotlin
- "XMLExtendedParser".spitToWords() // [XML, Extended, Parser]
+ "XMLExtendedParser".splitToWords() // [XML, Extended, Parser]
 ```
