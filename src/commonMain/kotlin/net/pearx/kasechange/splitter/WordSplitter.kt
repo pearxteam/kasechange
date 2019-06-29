@@ -7,6 +7,7 @@
 
 package net.pearx.kasechange.splitter
 
+import net.pearx.kasechange.isDigitPlatform
 import net.pearx.kasechange.isLowerCasePlatform
 import net.pearx.kasechange.isUpperCasePlatform
 
@@ -14,17 +15,21 @@ private val BOUNDARIES = arrayOf(' ', '-', '_', '.')
 
 private fun StringBuilder.toStringAndClear() = toString().also { clear() }
 
+private fun Char.isDigitOrUpperCase(): Boolean = this.isUpperCasePlatform() || this.isDigitPlatform()
+
 /**
  * Splits a string to multiple words by using the following rules:
  * - All ' ', '-', '_', '.' characters are considered word boundaries.
  * - If a lowercase character is followed by an uppercase character, a word boundary is considered to be prior to the uppercase character.
  * - If multiple uppercase characters are followed by a lowercase character, a word boundary is considered to be prior to the last uppercase character.
+ * - Digit characters handle same as uppercase characters.
  *
  * Examples:
  * - XMLBufferedReader => XML|Buffered|Reader
  * - newFile => new|File
  * - net.pearx.lib => net|pearx|lib
  * - NewDataClass => New|Data|Class
+ * - UInt32Value => U|Int|32|Value
  */
 fun String.splitToWords(): List<String> = mutableListOf<String>().also { list ->
     val word = StringBuilder()
@@ -34,9 +39,9 @@ fun String.splitToWords(): List<String> = mutableListOf<String>().also { list ->
             list.add(word.toStringAndClear())
         }
         else {
-            if (char.isUpperCasePlatform()) {
+            if (char.isDigitOrUpperCase()) {
                 if ((index > 0 && this[index - 1].isLowerCasePlatform()) ||
-                    (index > 0 && index < length - 1 && this[index - 1].isUpperCasePlatform() && this[index + 1].isLowerCasePlatform())) {
+                    (index > 0 && index < length - 1 && this[index - 1].isDigitOrUpperCase() && this[index + 1].isLowerCasePlatform())) {
                     list.add(word.toStringAndClear())
                 }
             }
