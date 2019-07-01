@@ -30,5 +30,6 @@ class SplitToWordsTest {
         assertEquals(listOf("XMLHTTP"), "XMLHTTP".splitToWords())
         assertEquals(listOf("S", "Class", "C"), "SClassC".splitToWords())
         assertEquals(listOf("XML", "Http", "Request", "JSON"), "XMLHttpRequestJSON".splitToWords())
+        assertEquals(listOf("U", "Int", "32", "Value"), "UInt32Value".splitToWords())
     }
 }

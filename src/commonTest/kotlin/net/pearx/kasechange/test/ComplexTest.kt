@@ -7,63 +7,73 @@
 
 package net.pearx.kasechange.test
 
-import net.pearx.kasechange.*
+import net.pearx.kasechange.toCamelCase
+import net.pearx.kasechange.toDotCase
+import net.pearx.kasechange.toKebabCase
+import net.pearx.kasechange.toLowerSpaceCase
+import net.pearx.kasechange.toPascalCase
+import net.pearx.kasechange.toScreamingSnakeCase
+import net.pearx.kasechange.toSnakeCase
+import net.pearx.kasechange.toTitleCase
+import net.pearx.kasechange.toTrainCase
+import net.pearx.kasechange.toUpperDotCase
+import net.pearx.kasechange.toUpperSpaceCase
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ComplexTest {
     @Test
     fun testCamel() {
-        assertEquals("someString", "Some String".toCamelCase())
+        assertEquals("someStringWith123Numbers", "Some String With 123 Numbers".toCamelCase())
     }
 
     @Test
     fun testPascal() {
-        assertEquals("SomeString", "Some String".toPascalCase())
+        assertEquals("SomeStringWith123Numbers", "Some String With 123 Numbers".toPascalCase())
     }
 
     @Test
     fun testSnake() {
-        assertEquals("some_string", "Some String".toSnakeCase())
+        assertEquals("some_string_with_123_numbers", "Some String With 123 Numbers".toSnakeCase())
     }
 
     @Test
     fun testScreamingSnake() {
-        assertEquals("SOME_STRING", "Some String".toScreamingSnakeCase())
+        assertEquals("SOME_STRING_WITH_123_NUMBERS", "Some String With 123 Numbers".toScreamingSnakeCase())
     }
 
     @Test
     fun testKebab() {
-        assertEquals("some-string", "Some String".toKebabCase())
+        assertEquals("some-string-with-123-numbers", "Some String With 123 Numbers".toKebabCase())
     }
 
     @Test
     fun testTrain() {
-        assertEquals("SOME-STRING", "Some String".toTrainCase())
+        assertEquals("SOME-STRING-WITH-123-NUMBERS", "Some String With 123 Numbers".toTrainCase())
     }
 
     @Test
     fun testLowerSpace() {
-        assertEquals("some string", "Some String".toLowerSpaceCase())
+        assertEquals("some string with 123 numbers", "Some String With 123 Numbers".toLowerSpaceCase())
     }
 
     @Test
     fun testUpperSpace() {
-        assertEquals("SOME STRING", "Some String".toUpperSpaceCase())
+        assertEquals("SOME STRING WITH 123 NUMBERS", "Some String With 123 Numbers".toUpperSpaceCase())
     }
 
     @Test
     fun testTitle() {
-        assertEquals("Some String", "some string".toTitleCase())
+        assertEquals("Some String With 123 Numbers", "some string with 123 numbers".toTitleCase())
     }
 
     @Test
     fun testDot() {
-        assertEquals("some.string", "Some String".toDotCase())
+        assertEquals("some.string.with.123.numbers", "Some String With 123 Numbers".toDotCase())
     }
 
     @Test
     fun testDotUpper() {
-        assertEquals("SOME.STRING", "Some String".toUpperDotCase())
+        assertEquals("SOME.STRING.WITH.123.NUMBERS", "Some String With 123 Numbers".toUpperDotCase())
     }
 }
