@@ -33,11 +33,11 @@ Multiplatform Kotlin library to convert strings between various case formats
 ```
  - Kotlin (replace `$kasechangeVersion` with the version you want):
 ```kotlin
- "implementation"("net.pearx.kasechange:kasechange-metadata:$kasechangeVersion") // for Common
+ implementation("net.pearx.kasechange:kasechange-metadata:$kasechangeVersion") // for Common
  // or
- "implementation"("net.pearx.kasechange:kasechange-jvm:$kasechangeVersion") // for JVM
+ implementation("net.pearx.kasechange:kasechange-jvm:$kasechangeVersion") // for JVM
  // or
- "implementation"("net.pearx.kasechange:kasechange-js:$kasechangeVersion") // for JS
+ implementation("net.pearx.kasechange:kasechange-js:$kasechangeVersion") // for JS
 ```
 2. Use the library and have fun!
 # Examples:
