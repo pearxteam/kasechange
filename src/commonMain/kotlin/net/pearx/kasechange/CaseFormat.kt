@@ -67,7 +67,7 @@ enum class CaseFormat(private val wordUppercase: Boolean, private val wordSplitt
     /**
      * Joins [words] using this case format and returns the result.
      */
-    fun format(words: Iterable<String>): String = StringBuilder().also { formatTo(it, words) }.toString()
+    fun format(words: Iterable<String>): String = buildString { formatTo(this, words) }
 
     /**
      * Joins [words] using this case format and returns the result.

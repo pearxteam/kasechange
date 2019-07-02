@@ -31,7 +31,8 @@ private fun Char.isDigitOrUpperCase(): Boolean = this.isUpperCasePlatform() || t
  * - NewDataClass => New|Data|Class
  * - UInt32Value => U|Int|32|Value
  */
-fun String.splitToWords(): List<String> = mutableListOf<String>().also { list ->
+fun String.splitToWords(): List<String> {
+    val list = mutableListOf<String>()
     val word = StringBuilder()
     for (index in 0 until length) {
         val char = this[index]
@@ -49,4 +50,5 @@ fun String.splitToWords(): List<String> = mutableListOf<String>().also { list ->
         }
     }
     list.add(word.toStringAndClear())
+    return list
 }
