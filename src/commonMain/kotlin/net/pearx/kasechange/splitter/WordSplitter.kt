@@ -41,8 +41,12 @@ fun String.splitToWords(): List<String> {
         }
         else {
             if (char.isDigitOrUpperCase()) {
-                if ((index > 0 && this[index - 1].isLowerCasePlatform()) ||
-                    (index > 0 && index < length - 1 && this[index - 1].isDigitOrUpperCase() && this[index + 1].isLowerCasePlatform())) {
+                val hasPrev = index > 0
+                val hasNext = index < length - 1
+                val prevLowerCase = hasPrev && this[index - 1].isLowerCasePlatform()
+                val prevDigitUpperCase = hasPrev && this[index - 1].isDigitOrUpperCase()
+                val nextLowerCase = hasNext && this[index + 1].isLowerCasePlatform()
+                if (prevLowerCase || (prevDigitUpperCase && nextLowerCase)) {
                     list.add(word.toStringAndClear())
                 }
             }
