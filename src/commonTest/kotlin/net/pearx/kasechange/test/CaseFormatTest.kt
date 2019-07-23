@@ -8,6 +8,8 @@
 package net.pearx.kasechange.test
 
 import net.pearx.kasechange.CaseFormat
+import net.pearx.kasechange.CaseFormatter
+import net.pearx.kasechange.ConfigCaseFormatter
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -65,5 +67,10 @@ class CaseFormatTest {
     @Test
     fun testDotUpper() {
         assertEquals("DOT.CASE.IS.FUN", CaseFormat.UPPER_DOT.format("dot", "Case", "is", "FUN"))
+    }
+
+    @Test
+    fun testConfig() {
+        assertEquals("Config..Allows..More..Options", ConfigCaseFormatter(ConfigCaseFormatter.Config(false, "..", true, true)).format("config", "Allows", "more", "OPTIONS"))
     }
 }
