@@ -13,11 +13,12 @@ import net.pearx.kasechange.splitter.splitToWords
  * An interface that defines a case formatter that can be used to join a collection of words into one string.
  */
 interface CaseFormatter {
-
     /**
      * Joins [words], appending the result to [appendable]
      */
     fun formatTo(appendable: Appendable, words: Iterable<String>)
+
+    // TODO: Move methods below out of the interface and make them extensions
 
     /**
      * Joins [words], appending the result to [appendable]

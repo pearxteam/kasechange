@@ -13,7 +13,7 @@ import net.pearx.kasechange.ConfigCaseFormatter.Config
 /**
  * An enumeration that represents a case format that can be used to join a collection of words into one string.
  */
-enum class CaseFormat(val config: Config) : CaseFormatter by ConfigCaseFormatter(config) {
+enum class CaseFormat(config: Config) : CaseFormatter by ConfigCaseFormatter(config) {
     /** SCREAMING_SNAKE_CASE */
     UPPER_UNDERSCORE(Config(true, "_")),
     /** snake_case */

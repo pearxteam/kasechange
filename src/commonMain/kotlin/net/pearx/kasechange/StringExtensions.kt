@@ -10,14 +10,14 @@ package net.pearx.kasechange
 import net.pearx.kasechange.splitter.splitToWords
 
 /**
- * Converts a string to specific [caseFormat] using the word splitting rules defined in [splitToWords].
+ * Converts a string to specific [caseFormatter] using the word splitting rules defined in [splitToWords].
  */
-fun String.toCase(caseFormat: CaseFormat) = caseFormat.format(this)
+fun String.toCase(caseFormatter: CaseFormatter) = caseFormatter.format(this)
 
 /**
- * Converts a string using the specific [caseFormatConfig] using the word splitting rules defined in [splitToWords].
+ * Converts a string using the specific [caseFormatterConfig] using the word splitting rules defined in [splitToWords].
  */
-fun String.toCase(caseFormatConfig: ConfigCaseFormatter.Config) = ConfigCaseFormatter(caseFormatConfig).format(this)
+fun String.toCase(caseFormatterConfig: ConfigCaseFormatter.Config) = toCase(ConfigCaseFormatter(caseFormatterConfig))
 
 /** Converts a string to SCREAMING_SNAKE_CASE using the word splitting rules defined in [splitToWords]. */
 fun String.toScreamingSnakeCase() = toCase(CaseFormat.UPPER_UNDERSCORE)
