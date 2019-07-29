@@ -8,6 +8,7 @@
 package net.pearx.kasechange.test
 
 import net.pearx.kasechange.toCamelCase
+import net.pearx.kasechange.toCase
 import net.pearx.kasechange.toDotCase
 import net.pearx.kasechange.toKebabCase
 import net.pearx.kasechange.toLowerSpaceCase
@@ -18,6 +19,7 @@ import net.pearx.kasechange.toTitleCase
 import net.pearx.kasechange.toTrainCase
 import net.pearx.kasechange.toUpperDotCase
 import net.pearx.kasechange.toUpperSpaceCase
+import net.pearx.kasechange.ConfigCaseFormatter.Config
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -75,5 +77,10 @@ class ComplexTest {
     @Test
     fun testDotUpper() {
         assertEquals("SOME.STRING.WITH.123.NUMBERS", "Some String With 123 Numbers".toUpperDotCase())
+    }
+
+    @Test
+    fun testConfig() {
+        assertEquals("Some..String..With..123..Numbers", "Some String With 123 Numbers".toCase(Config(false, "..", true, true)))
     }
 }

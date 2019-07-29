@@ -14,6 +14,11 @@ import net.pearx.kasechange.splitter.splitToWords
  */
 fun String.toCase(caseFormat: CaseFormat) = caseFormat.format(this)
 
+/**
+ * Converts a string using the specific [caseFormatConfig] using the word splitting rules defined in [splitToWords].
+ */
+fun String.toCase(caseFormatConfig: ConfigCaseFormatter.Config) = ConfigCaseFormatter(caseFormatConfig).format(this)
+
 /** Converts a string to SCREAMING_SNAKE_CASE using the word splitting rules defined in [splitToWords]. */
 fun String.toScreamingSnakeCase() = toCase(CaseFormat.UPPER_UNDERSCORE)
 
