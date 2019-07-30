@@ -7,7 +7,6 @@
 
 package net.pearx.kasechange
 
-import net.pearx.kasechange.splitter.splitToWords
 import net.pearx.kasechange.ConfigCaseFormatter.Config
 
 /**
@@ -19,9 +18,9 @@ enum class CaseFormat(config: Config) : CaseFormatter by ConfigCaseFormatter(con
     /** snake_case */
     LOWER_UNDERSCORE(Config(false, "_")),
     /** PascalCase */
-    CAPITALIZED_CAMEL(Config(false, null, true, true)),
+    CAPITALIZED_CAMEL(Config(false, wordCapitalize = true, firstWordCapitalize = true)),
     /** camelCase */
-    CAMEL(Config(false, null, true, false)),
+    CAMEL(Config(false, wordCapitalize = true, firstWordCapitalize = false)),
     /** TRAIN-CASE */
     UPPER_HYPHEN(Config(true, "-")),
     /** kebab-case */
@@ -29,7 +28,7 @@ enum class CaseFormat(config: Config) : CaseFormatter by ConfigCaseFormatter(con
     /** UPPER SPACE CASE */
     UPPER_SPACE(Config(true, " ")),
     /** Title Case */
-    CAPITALIZED_SPACE(Config(false, " ", true, true)),
+    CAPITALIZED_SPACE(Config(false, " ", wordCapitalize = true, firstWordCapitalize = true)),
     /** lower space case */
     LOWER_SPACE(Config(false, " ")),
     /** UPPER.DOT.CASE */
