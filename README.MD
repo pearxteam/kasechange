@@ -44,6 +44,10 @@ Multiplatform Kotlin library to convert strings between various case formats
  "IAmAPascalCasedString".toSnakeCase() // i_am_a_pascal_cased_string
  "IAmAPascalCasedString".toCase(CaseFormat.LOWER_UNDERSCORE)  // i_am_a_pascal_cased_string
 ```
+- Transforming string to a custom case:
+```kotlin
+"some_string".toCase(CaseFormatterConfig(CaseFormatterConfig(false, "..", wordCapitalize = true, firstWordCapitalize = true))) // Some..String
+```
  - Splitting a string into words:
 ```kotlin
  "XMLExtendedParser".splitToWords() // [XML, Extended, Parser]
