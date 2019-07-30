@@ -7,32 +7,30 @@
 
 package net.pearx.kasechange
 
-import net.pearx.kasechange.ConfigCaseFormatter.Config
-
 /**
- * An enumeration that represents a case format that can be used to join a collection of words into one string.
+ * An enumeration that contains a standard set of [CaseFormatter]s.
  */
-enum class CaseFormat(config: Config) : CaseFormatter by ConfigCaseFormatter(config) {
+enum class CaseFormat(config: CaseFormatterConfig) : CaseFormatter by CaseFormatterConfigurable(config) {
     /** SCREAMING_SNAKE_CASE */
-    UPPER_UNDERSCORE(Config(true, "_")),
+    UPPER_UNDERSCORE(CaseFormatterConfig(true, "_")),
     /** snake_case */
-    LOWER_UNDERSCORE(Config(false, "_")),
+    LOWER_UNDERSCORE(CaseFormatterConfig(false, "_")),
     /** PascalCase */
-    CAPITALIZED_CAMEL(Config(false, wordCapitalize = true, firstWordCapitalize = true)),
+    CAPITALIZED_CAMEL(CaseFormatterConfig(false, wordCapitalize = true, firstWordCapitalize = true)),
     /** camelCase */
-    CAMEL(Config(false, wordCapitalize = true, firstWordCapitalize = false)),
+    CAMEL(CaseFormatterConfig(false, wordCapitalize = true, firstWordCapitalize = false)),
     /** TRAIN-CASE */
-    UPPER_HYPHEN(Config(true, "-")),
+    UPPER_HYPHEN(CaseFormatterConfig(true, "-")),
     /** kebab-case */
-    LOWER_HYPHEN(Config(false, "-")),
+    LOWER_HYPHEN(CaseFormatterConfig(false, "-")),
     /** UPPER SPACE CASE */
-    UPPER_SPACE(Config(true, " ")),
+    UPPER_SPACE(CaseFormatterConfig(true, " ")),
     /** Title Case */
-    CAPITALIZED_SPACE(Config(false, " ", wordCapitalize = true, firstWordCapitalize = true)),
+    CAPITALIZED_SPACE(CaseFormatterConfig(false, " ", wordCapitalize = true, firstWordCapitalize = true)),
     /** lower space case */
-    LOWER_SPACE(Config(false, " ")),
+    LOWER_SPACE(CaseFormatterConfig(false, " ")),
     /** UPPER.DOT.CASE */
-    UPPER_DOT(Config(true, ".")),
+    UPPER_DOT(CaseFormatterConfig(true, ".")),
     /** dot.case */
-    LOWER_DOT(Config(false, "."));
+    LOWER_DOT(CaseFormatterConfig(false, "."));
 }

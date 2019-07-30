@@ -7,11 +7,12 @@
 
 package net.pearx.kasechange
 
+data class CaseFormatterConfig(val wordUppercase: Boolean, val wordSplitter: String? = null, val wordCapitalize: Boolean = false, val firstWordCapitalize: Boolean = false)
+
 /**
- * An interface that defines a case formatter that can be used to join a collection of words into one string.
+ * A default implementation of the [CaseFormatter] that can be configured using a [CaseFormatterConfig] instance.
  */
-class ConfigCaseFormatter(private val config: Config) : CaseFormatter {
-    data class Config(val wordUppercase: Boolean, val wordSplitter: String? = null, val wordCapitalize: Boolean = false, val firstWordCapitalize: Boolean = false)
+class CaseFormatterConfigurable(private val config: CaseFormatterConfig) : CaseFormatter {
 
     /**
      * Joins [words], appending the result to [appendable]
@@ -37,5 +38,4 @@ class ConfigCaseFormatter(private val config: Config) : CaseFormatter {
             }
         }
     }
-
 }

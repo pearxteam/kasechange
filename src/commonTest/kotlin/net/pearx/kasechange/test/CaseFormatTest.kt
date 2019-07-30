@@ -8,8 +8,8 @@
 package net.pearx.kasechange.test
 
 import net.pearx.kasechange.CaseFormat
-import net.pearx.kasechange.CaseFormatter
-import net.pearx.kasechange.ConfigCaseFormatter
+import net.pearx.kasechange.CaseFormatterConfig
+import net.pearx.kasechange.CaseFormatterConfigurable
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -71,6 +71,6 @@ class CaseFormatTest {
 
     @Test
     fun testConfig() {
-        assertEquals("Config..Allows..More..Options", ConfigCaseFormatter(ConfigCaseFormatter.Config(false, "..", true, true)).format("config", "Allows", "more", "OPTIONS"))
+        assertEquals("Config..Allows..More..Options", CaseFormatterConfigurable(CaseFormatterConfig(false, "..", wordCapitalize = true, firstWordCapitalize = true)).format("config", "Allows", "more", "OPTIONS"))
     }
 }

@@ -17,7 +17,7 @@ fun String.toCase(caseFormatter: CaseFormatter) = caseFormatter.format(this)
 /**
  * Converts a string using the specific [caseFormatterConfig] using the word splitting rules defined in [splitToWords].
  */
-fun String.toCase(caseFormatterConfig: ConfigCaseFormatter.Config) = toCase(ConfigCaseFormatter(caseFormatterConfig))
+fun String.toCase(caseFormatterConfig: CaseFormatterConfig) = toCase(CaseFormatterConfigurable(caseFormatterConfig))
 
 /** Converts a string to SCREAMING_SNAKE_CASE using the word splitting rules defined in [splitToWords]. */
 fun String.toScreamingSnakeCase() = toCase(CaseFormat.UPPER_UNDERSCORE)
