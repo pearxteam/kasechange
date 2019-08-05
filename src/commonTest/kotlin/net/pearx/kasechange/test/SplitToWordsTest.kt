@@ -31,5 +31,7 @@ class SplitToWordsTest {
         assertEquals(listOf("S", "Class", "C"), "SClassC".splitToWords())
         assertEquals(listOf("XML", "Http", "Request", "JSON"), "XMLHttpRequestJSON".splitToWords())
         assertEquals(listOf("U", "Int", "32", "Value"), "UInt32Value".splitToWords())
+        assertEquals(listOf("U", "Int32", "Value"), "UInt32Value".splitToWords(digitsAsUppercaseChars = false))
+        assertEquals(listOf("U", "Int32value"), "UInt32value".splitToWords(digitsAsUppercaseChars = false))
     }
 }
