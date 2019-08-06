@@ -15,23 +15,23 @@ private val BOUNDARIES = arrayOf(' ', '-', '_', '.')
 
 private fun StringBuilder.toStringAndClear() = toString().also { clear() }
 
-private fun Char.isDigitOrUpperCase(digitsAsUppercaseChars: Boolean): Boolean = this.isUpperCasePlatform() || (digitsAsUppercaseChars && this.isDigitPlatform())
+private fun Char.isDigitOrUpperCase(digitsAsWordBoundaries: Boolean): Boolean = this.isUpperCasePlatform() || (digitsAsWordBoundaries && this.isDigitPlatform())
 
 /**
  * Splits a string to multiple words by using the following rules:
  * - All ' ', '-', '_', '.' characters are considered word boundaries.
  * - If a lowercase character is followed by an uppercase character, a word boundary is considered to be prior to the uppercase character.
  * - If multiple uppercase characters are followed by a lowercase character, a word boundary is considered to be prior to the last uppercase character.
- * - Digit characters handle same as uppercase characters if [digitsAsUppercaseChars] is true.
+ * - Digit characters handle same as uppercase characters if [digitsAsWordBoundaries] is true.
  *
  * Examples:
  * - XMLBufferedReader => XML|Buffered|Reader
  * - newFile => new|File
  * - net.pearx.lib => net|pearx|lib
  * - NewDataClass => New|Data|Class
- * - UInt32Value => U|Int|32|Value (if [digitsAsUppercaseChars] is true)
+ * - UInt32Value => U|Int|32|Value (if [digitsAsWordBoundaries] is true)
  */
-fun String.splitToWords(digitsAsUppercaseChars: Boolean = true): List<String> {
+fun String.splitToWords(digitsAsWordBoundaries: Boolean = true): List<String> {
     val list = mutableListOf<String>()
     val word = StringBuilder()
     for (index in 0 until length) {
@@ -40,7 +40,7 @@ fun String.splitToWords(digitsAsUppercaseChars: Boolean = true): List<String> {
             list.add(word.toStringAndClear())
         }
         else {
-            if (char.isDigitOrUpperCase(digitsAsUppercaseChars)) {
+            if (char.isDigitOrUpperCase(digitsAsWordBoundaries)) {
                 val hasPrev = index > 0
                 val hasNext = index < length - 1
                 val prevLowerCase = hasPrev && this[index - 1].isLowerCasePlatform()
