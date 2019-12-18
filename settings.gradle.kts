@@ -5,9 +5,6 @@ pluginManagement {
     val kotlinVersion: String by settings
     val githubReleaseVersion: String by settings
 
-rootProject.name = "kasechange"
-
-pluginManagement {
     resolutionStrategy {
         eachPlugin {
             if (requested.id.id == "kotlin-gradle-plugin")
