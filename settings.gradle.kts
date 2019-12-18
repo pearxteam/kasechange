@@ -1,6 +1,9 @@
-val multigradleVersion: String by settings
-val kotlinVersion: String by settings
-val githubReleaseVersion: String by settings
+rootProject.name = "kasechange"
+
+pluginManagement {
+    val multigradleVersion: String by settings
+    val kotlinVersion: String by settings
+    val githubReleaseVersion: String by settings
 
 rootProject.name = "kasechange"
 
