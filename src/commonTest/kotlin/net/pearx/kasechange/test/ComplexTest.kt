@@ -8,6 +8,7 @@
 package net.pearx.kasechange.test
 
 import net.pearx.kasechange.*
+import net.pearx.kasechange.formatter.CaseFormatterConfig
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

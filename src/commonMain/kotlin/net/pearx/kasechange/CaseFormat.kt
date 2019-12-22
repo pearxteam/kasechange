@@ -7,30 +7,46 @@
 
 package net.pearx.kasechange
 
+import net.pearx.kasechange.formatter.CaseFormatter
+import net.pearx.kasechange.formatter.CaseFormatterConfig
+import net.pearx.kasechange.formatter.CaseFormatterConfigurable
+import net.pearx.kasechange.splitter.WordSplitter
+import net.pearx.kasechange.splitter.WordSplitterConfig
+import net.pearx.kasechange.splitter.WordSplitterConfigurable
+
 /**
  * An enumeration that contains a standard set of [CaseFormatter]s.
  */
-enum class CaseFormat(config: CaseFormatterConfig) : CaseFormatter by CaseFormatterConfigurable(config) {
+enum class CaseFormat(caseFormatterConfig: CaseFormatterConfig, wordSplitterConfig: WordSplitterConfig) : CaseFormatter by CaseFormatterConfigurable(caseFormatterConfig), WordSplitter by WordSplitterConfigurable(wordSplitterConfig) {
     /** SCREAMING_SNAKE_CASE */
-    UPPER_UNDERSCORE(CaseFormatterConfig(true, "_")),
+    UPPER_UNDERSCORE(CaseFormatterConfig(true, "_"), WordSplitterConfig(setOf('_'))),
     /** snake_case */
-    LOWER_UNDERSCORE(CaseFormatterConfig(false, "_")),
+    LOWER_UNDERSCORE(CaseFormatterConfig(false, "_"), WordSplitterConfig(setOf('_'))),
     /** PascalCase */
-    CAPITALIZED_CAMEL(CaseFormatterConfig(false, wordCapitalize = true, firstWordCapitalize = true)),
+    CAPITALIZED_CAMEL(CaseFormatterConfig(false, wordCapitalize = true, firstWordCapitalize = true), WordSplitterConfig(setOf(' ', '-', '_', '.'), handleCase = true, treatDigitsAsUppercase = true)),
     /** camelCase */
-    CAMEL(CaseFormatterConfig(false, wordCapitalize = true, firstWordCapitalize = false)),
+    CAMEL(CaseFormatterConfig(false, wordCapitalize = true, firstWordCapitalize = false), WordSplitterConfig(setOf(' ', '-', '_', '.'), handleCase = true, treatDigitsAsUppercase = true)),
     /** TRAIN-CASE */
-    UPPER_HYPHEN(CaseFormatterConfig(true, "-")),
+    UPPER_HYPHEN(CaseFormatterConfig(true, "-"), WordSplitterConfig(setOf('-'))),
     /** kebab-case */
-    LOWER_HYPHEN(CaseFormatterConfig(false, "-")),
+    LOWER_HYPHEN(CaseFormatterConfig(false, "-"), WordSplitterConfig(setOf('-'))),
     /** UPPER SPACE CASE */
-    UPPER_SPACE(CaseFormatterConfig(true, " ")),
+    UPPER_SPACE(CaseFormatterConfig(true, " "), WordSplitterConfig(setOf(' '))),
     /** Title Case */
-    CAPITALIZED_SPACE(CaseFormatterConfig(false, " ", wordCapitalize = true, firstWordCapitalize = true)),
+    CAPITALIZED_SPACE(CaseFormatterConfig(false, " ", wordCapitalize = true, firstWordCapitalize = true), WordSplitterConfig(setOf(' '))),
     /** lower space case */
-    LOWER_SPACE(CaseFormatterConfig(false, " ")),
+    LOWER_SPACE(CaseFormatterConfig(false, " "), WordSplitterConfig(setOf(' '))),
     /** UPPER.DOT.CASE */
-    UPPER_DOT(CaseFormatterConfig(true, ".")),
+    UPPER_DOT(CaseFormatterConfig(true, "."), WordSplitterConfig(setOf('.'))),
     /** dot.case */
-    LOWER_DOT(CaseFormatterConfig(false, "."));
+    LOWER_DOT(CaseFormatterConfig(false, "."), WordSplitterConfig(setOf('.')));
 }
+
+/**
+ * A [WordSplitter] that can be used to split a string in any supported case format into words.
+ */
+val UNIVERSAL_WORD_SPLITTER = WordSplitterConfigurable(WordSplitterConfig(
+    boundaries = setOf(' ', '-', '_', '.'),
+    handleCase = true,
+    treatDigitsAsUppercase = true
+))
