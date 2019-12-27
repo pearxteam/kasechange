@@ -33,9 +33,9 @@ class WordSplitterConfigurable(private val config: WordSplitterConfig) : WordSpl
      * - If [WordSplitterConfig.handleCase] is set to true: if a lowercase character is followed by an uppercase character, a word boundary is considered to be prior to the uppercase character.
      * - If [WordSplitterConfig.handleCase] is set to true: if multiple uppercase characters are followed by a lowercase character, a word boundary is considered to be prior to the last uppercase character.
      * - If [WordSplitterConfig.treatDigitsAsUppercase] is set to true: Digit characters handle same as uppercase characters.
+     * - If [WordSplitterConfig.treatDigitsAsUppercase] is set to false: Digit characters handle same as lowercase characters.
      */
-    override fun splitToWords(string: String): List<String> {
-        val list = mutableListOf<String>()
+    override fun splitToWords(string: String): List<String> {val list = mutableListOf<String>()
         val word = StringBuilder()
         for (index in string.indices) {
             val char = string[index]
@@ -46,9 +46,9 @@ class WordSplitterConfigurable(private val config: WordSplitterConfig) : WordSpl
                 if (config.handleCase && char.isDigitOrUpperCase(config.treatDigitsAsUppercase)) {
                     val hasPrev = index > 0
                     val hasNext = index < string.length - 1
-                    val prevLowerCase = hasPrev && string[index - 1].isLowerCasePlatform()
+                    val prevLowerCase = hasPrev && string[index - 1].isDigitOrLowerCase(config.treatDigitsAsUppercase)
                     val prevDigitUpperCase = hasPrev && string[index - 1].isDigitOrUpperCase(config.treatDigitsAsUppercase)
-                    val nextLowerCase = hasNext && string[index + 1].isLowerCasePlatform()
+                    val nextLowerCase = hasNext && string[index + 1].isDigitOrLowerCase(config.treatDigitsAsUppercase)
                     if (prevLowerCase || (prevDigitUpperCase && nextLowerCase)) {
                         list.add(word.toStringAndClear())
                     }
@@ -62,5 +62,8 @@ class WordSplitterConfigurable(private val config: WordSplitterConfig) : WordSpl
 
     private fun StringBuilder.toStringAndClear() = toString().also { clear() }
 
-    private fun Char.isDigitOrUpperCase(treatDigitsAsUppercase: Boolean): Boolean = (treatDigitsAsUppercase && isDigitPlatform()) || isUpperCasePlatform()
+    private fun Char.isDigitOrUpperCase(treatDigitsAsUppercase: Boolean): Boolean =
+        (treatDigitsAsUppercase && isDigitPlatform()) || isUpperCasePlatform()
+
+    private fun Char.isDigitOrLowerCase(treatDigitsAsUppercase: Boolean): Boolean = (!treatDigitsAsUppercase && isDigitPlatform()) || isLowerCasePlatform()
 }
