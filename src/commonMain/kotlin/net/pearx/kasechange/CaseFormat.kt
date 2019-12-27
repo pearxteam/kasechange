@@ -43,7 +43,8 @@ enum class CaseFormat(caseFormatterConfig: CaseFormatterConfig, wordSplitterConf
 }
 
 /**
- * A [WordSplitter] that can be used to split a string in any supported case format into words.
+ * A default [WordSplitter] that can be used to split a string in any supported case format into words.
+ * However, its behavior may be strange and it's always better to specify other [WordSplitter] (for example one of [CaseFormat]s) manually.
  */
 val UNIVERSAL_WORD_SPLITTER = WordSplitterConfigurable(WordSplitterConfig(
     boundaries = setOf(' ', '-', '_', '.'),

@@ -12,7 +12,7 @@ package net.pearx.kasechange.splitter
  */
 interface WordSplitter {
     /**
-     * Splits [string] into multiple words.
+     * Splits [string] into multiple words and returns a list of them.
      */
     fun splitToWords(string: String): List<String>
 }

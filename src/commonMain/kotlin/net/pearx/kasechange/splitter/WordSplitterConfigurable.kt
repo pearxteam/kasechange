@@ -15,11 +15,11 @@ import net.pearx.kasechange.isUpperCasePlatform
  * A configuration class for [WordSplitterConfigurable].
  */
 data class WordSplitterConfig(
-    /** @see [WordSplitterConfigurable.splitToWords] */
+    /** @see WordSplitterConfigurable.splitToWords */
     val boundaries: Set<Char> = setOf(),
     /** @see WordSplitterConfigurable.splitToWords */
     val handleCase: Boolean = false,
-    /** @see [WordSplitterConfigurable.splitToWords] */
+    /** @see WordSplitterConfigurable.splitToWords */
     val treatDigitsAsUppercase: Boolean = false
 )
 
@@ -28,7 +28,7 @@ data class WordSplitterConfig(
  */
 class WordSplitterConfigurable(private val config: WordSplitterConfig) : WordSplitter {
     /**
-     * Splits a string into multiple words by using the following rules:
+     * Splits [string] into multiple words and returns a list of them.
      * - All [WordSplitterConfig.boundaries] characters are considered word boundaries.
      * - If [WordSplitterConfig.handleCase] is set to true: if a lowercase character is followed by an uppercase character, a word boundary is considered to be prior to the uppercase character.
      * - If [WordSplitterConfig.handleCase] is set to true: if multiple uppercase characters are followed by a lowercase character, a word boundary is considered to be prior to the last uppercase character.

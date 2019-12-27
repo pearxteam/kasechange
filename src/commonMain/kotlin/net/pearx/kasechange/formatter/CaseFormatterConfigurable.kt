@@ -11,9 +11,13 @@ package net.pearx.kasechange.formatter
  * A configuration class for [CaseFormatterConfigurable].
  */
 data class CaseFormatterConfig(
+    /** @see CaseFormatterConfigurable.formatTo */
     val wordUppercase: Boolean,
+    /** @see CaseFormatterConfigurable.formatTo */
     val wordSplitter: String? = null,
+    /** @see CaseFormatterConfigurable.formatTo */
     val wordCapitalize: Boolean = false,
+    /** @see CaseFormatterConfigurable.formatTo */
     val firstWordCapitalize: Boolean = false
 )
 
@@ -23,6 +27,12 @@ data class CaseFormatterConfig(
 class CaseFormatterConfigurable(private val config: CaseFormatterConfig) : CaseFormatter {
     /**
      * Joins [words], appending the result to [appendable].
+     * - If [CaseFormatterConfig.wordSplitter] isn't null, it will be inserted between each word.
+     * - Each word will be converted using one of the rules below (in precedence from highest to lowest):
+     * - - If [CaseFormatterConfig.wordUppercase] is true, the word will be converted to uppercase.
+     * - - If [CaseFormatterConfig.firstWordCapitalize] is true and the word is first, the word will be capitalized.
+     * - - If [CaseFormatterConfig.wordCapitalize] is true, the word will be capitalized.
+     * - - Otherwise, the word will be converted to lowercase.
      */
     override fun formatTo(appendable: Appendable, words: Iterable<String>) {
         with(appendable) {

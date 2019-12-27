@@ -15,27 +15,27 @@ import net.pearx.kasechange.splitter.WordSplitter
  */
 interface CaseFormatter {
     /**
-     * Joins [words], appending the result to [appendable].
+     * Joins all elements of [words], appending the result to [appendable].
      */
     fun formatTo(appendable: Appendable, words: Iterable<String>)
 }
 
 /**
- * Joins [words], appending the result to [appendable].
+ * Joins all elements of [words], appending the result to [appendable].
  */
 fun CaseFormatter.formatTo(appendable: Appendable, vararg words: String) = formatTo(appendable, words.asIterable())
 
 /**
- * Joins [words] and returns the result.
+ * Joins all elements of [words] and returns the resulting string.
  */
 fun CaseFormatter.format(words: Iterable<String>): String = buildString { formatTo(this, words) }
 
 /**
- * Joins [words] and returns the result.
+ * Joins all elements of [words] and returns the resulting string.
  */
 fun CaseFormatter.format(vararg words: String) = format(words.asIterable())
 
 /**
- * Converts a string by splitting the [string] into multiple words using [wordSplitter] and joining them using this [CaseFormatter].
+ * Returns a copy of [string] converted to another case by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormatter].
  */
 fun CaseFormatter.format(string: String, wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = format(wordSplitter.splitToWords(string))

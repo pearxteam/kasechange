@@ -16,48 +16,55 @@ import net.pearx.kasechange.splitter.WordSplitterConfig
 import net.pearx.kasechange.splitter.WordSplitterConfigurable
 
 /**
- * Returns a copy of this string converted to another case by splitting it into multiple words using [wordSplitter] and joining them using [caseFormatter].
+ * Returns a copy of this string converted to another case by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [specified][to] [CaseFormatter].
  */
-fun String.toCase(caseFormatter: CaseFormatter, wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = caseFormatter.format(this, wordSplitter)
+fun String.toCase(to: CaseFormatter, from: WordSplitter = UNIVERSAL_WORD_SPLITTER) = to.format(this, from)
 
 /**
- * Returns a copy of this string converted to another case by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormatterConfigurable] configured with [caseFormatterConfig].
+ * Returns a copy of this string converted to another case by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormatterConfigurable] configured with [toConfig].
  */
-fun String.toCase(caseFormatterConfig: CaseFormatterConfig, wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormatterConfigurable(caseFormatterConfig), wordSplitter)
+fun String.toCase(toConfig: CaseFormatterConfig, from: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormatterConfigurable(toConfig), from)
+
 /**
- * Returns a copy of this string converted to another case by splitting it into multiple words using [WordSplitterConfigurable] configured with [wordSplitterConfig] and joining them using [CaseFormatterConfigurable] configured with [caseFormatterConfig].
+ * Returns a copy of this string converted to another case by splitting it into multiple words using [WordSplitterConfigurable] configured with [fromConfig] and joining them using [CaseFormatterConfigurable] configured with [toConfig].
  */
-fun String.toCase(caseFormatterConfig: CaseFormatterConfig, wordSplitterConfig: WordSplitterConfig) = toCase(caseFormatterConfig, WordSplitterConfigurable(wordSplitterConfig))
+fun String.toCase(toConfig: CaseFormatterConfig, fromConfig: WordSplitterConfig) = toCase(toConfig, WordSplitterConfigurable(fromConfig))
 
-/** Returns a copy of this string converted to SCREAMING_SNAKE_CASE by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormat.UPPER_UNDERSCORE]. */
-fun String.toScreamingSnakeCase(wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.UPPER_UNDERSCORE, wordSplitter)
+/** Returns a copy of this string converted to SCREAMING_SNAKE_CASE by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.UPPER_UNDERSCORE]. */
+fun String.toScreamingSnakeCase(from: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.UPPER_UNDERSCORE, from)
 
-/** Returns a copy of this string converted to snake_case by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormat.LOWER_UNDERSCORE].. */
-fun String.toSnakeCase(wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.LOWER_UNDERSCORE, wordSplitter)
+/** Returns a copy of this string converted to snake_case by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.LOWER_UNDERSCORE].. */
+fun String.toSnakeCase(from: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.LOWER_UNDERSCORE, from)
 
-/** Returns a copy of this string converted to PascalCase by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormat.CAPITALIZED_CAMEL].. */
-fun String.toPascalCase(wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.CAPITALIZED_CAMEL, wordSplitter)
+/** Returns a copy of this string converted to PascalCase by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.CAPITALIZED_CAMEL].. */
+fun String.toPascalCase(from: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.CAPITALIZED_CAMEL, from)
 
-/** Returns a copy of this string converted to camelCase by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormat.CAMEL].. */
-fun String.toCamelCase(wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.CAMEL, wordSplitter)
+/** Returns a copy of this string converted to camelCase by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.CAMEL].. */
+fun String.toCamelCase(from: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.CAMEL, from)
 
-/** Returns a copy of this string converted to TRAIN-CASE by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormat.UPPER_HYPHEN].. */
-fun String.toTrainCase(wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.UPPER_HYPHEN, wordSplitter)
+/** Returns a copy of this string converted to TRAIN-CASE by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.UPPER_HYPHEN].. */
+fun String.toTrainCase(from: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.UPPER_HYPHEN, from)
 
-/** Returns a copy of this string converted to kebab-case by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormat.LOWER_HYPHEN].. */
-fun String.toKebabCase(wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.LOWER_HYPHEN, wordSplitter)
+/** Returns a copy of this string converted to kebab-case by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.LOWER_HYPHEN].. */
+fun String.toKebabCase(from: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.LOWER_HYPHEN, from)
 
-/** Returns a copy of this string converted to UPPER SPACE CASE by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormat.UPPER_SPACE].. */
-fun String.toUpperSpaceCase(wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.UPPER_SPACE, wordSplitter)
+/** Returns a copy of this string converted to UPPER SPACE CASE by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.UPPER_SPACE].. */
+fun String.toUpperSpaceCase(from: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.UPPER_SPACE, from)
 
-/** Returns a copy of this string converted to Title Case by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormat.CAPITALIZED_SPACE].. */
-fun String.toTitleCase(wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.CAPITALIZED_SPACE, wordSplitter)
+/** Returns a copy of this string converted to Title Case by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.CAPITALIZED_SPACE].. */
+fun String.toTitleCase(from: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.CAPITALIZED_SPACE, from)
 
-/** Returns a copy of this string converted to lower space case by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormat.LOWER_SPACE].. */
-fun String.toLowerSpaceCase(wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.LOWER_SPACE, wordSplitter)
+/** Returns a copy of this string converted to lower space case by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.LOWER_SPACE].. */
+fun String.toLowerSpaceCase(from: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.LOWER_SPACE, from)
 
-/** Returns a copy of this string converted to UPPER.DOT.CASE by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormat.UPPER_DOT].. */
-fun String.toUpperDotCase(wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.UPPER_DOT, wordSplitter)
+/** Returns a copy of this string converted to UPPER.DOT.CASE by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.UPPER_DOT].. */
+fun String.toUpperDotCase(from: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.UPPER_DOT, from)
 
-/** Returns a copy of this string converted to dot.case by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormat.LOWER_DOT].. */
-fun String.toDotCase(wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.LOWER_DOT, wordSplitter)
+/** Returns a copy of this string converted to dot.case by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.LOWER_DOT].. */
+fun String.toDotCase(from: WordSplitter = UNIVERSAL_WORD_SPLITTER) = toCase(CaseFormat.LOWER_DOT, from)
+
+
+/**
+ * Splits this string into multiple words using [specified][splitter] [WordSplitter] and returns a list of words.
+ */
+fun String.splitToWords(splitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = splitter.splitToWords(this)
