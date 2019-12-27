@@ -7,8 +7,8 @@
 
 package net.pearx.kasechange.formatter
 
-import net.pearx.kasechange.UNIVERSAL_WORD_SPLITTER
 import net.pearx.kasechange.splitter.WordSplitter
+import net.pearx.kasechange.universalWordSplitter
 
 /**
  * An interface that defines a case formatter that can be used to join a collection of words into single string.
@@ -38,4 +38,4 @@ fun CaseFormatter.format(vararg words: String) = format(words.asIterable())
 /**
  * Returns a copy of [string] converted to another case by splitting it into multiple words using [wordSplitter] and joining them using [CaseFormatter].
  */
-fun CaseFormatter.format(string: String, wordSplitter: WordSplitter = UNIVERSAL_WORD_SPLITTER) = format(wordSplitter.splitToWords(string))
+fun CaseFormatter.format(string: String, wordSplitter: WordSplitter = universalWordSplitter()) = format(wordSplitter.splitToWords(string))

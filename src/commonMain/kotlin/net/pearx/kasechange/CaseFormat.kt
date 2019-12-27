@@ -42,12 +42,22 @@ enum class CaseFormat(caseFormatterConfig: CaseFormatterConfig, wordSplitterConf
     LOWER_DOT(CaseFormatterConfig(false, "."), WordSplitterConfig(setOf('.')));
 }
 
+private fun createUniversalWordSplitter(treatDigitsAsUppercase: Boolean): WordSplitter {
+    return WordSplitterConfigurable(WordSplitterConfig(
+        boundaries = setOf(' ', '-', '_', '.'),
+        handleCase = true,
+        treatDigitsAsUppercase = treatDigitsAsUppercase
+    ))
+}
+
+
+private val UNIVERSAL_WORD_SPLITTER_DIGITS_UPPERCASE = createUniversalWordSplitter(true)
+
+private val UNIVERSAL_WORD_SPLITTER_DIGITS_NOT_UPPERCASE = createUniversalWordSplitter(false)
+
 /**
- * A default [WordSplitter] that can be used to split a string in any supported case format into words.
+ * Returns a default [WordSplitter] that can be used to split a string in any supported case format into words.
  * However, its behavior may be strange and it's always better to specify other [WordSplitter] (for example one of [CaseFormat]s) manually.
+ * @param treatDigitsAsUppercase See [WordSplitterConfig.treatDigitsAsUppercase]
  */
-val UNIVERSAL_WORD_SPLITTER = WordSplitterConfigurable(WordSplitterConfig(
-    boundaries = setOf(' ', '-', '_', '.'),
-    handleCase = true,
-    treatDigitsAsUppercase = true
-))
+fun universalWordSplitter(treatDigitsAsUppercase: Boolean = true) =  if(treatDigitsAsUppercase) UNIVERSAL_WORD_SPLITTER_DIGITS_UPPERCASE else UNIVERSAL_WORD_SPLITTER_DIGITS_NOT_UPPERCASE
