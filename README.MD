@@ -39,16 +39,31 @@ Multiplatform Kotlin library to convert strings between various case formats
 ```
 2. Use the library and have fun!
 # Examples:
+ - Transforming string from any case to specific one:
+```kotlin
+ "IAmAPascalCasedString123".toSnakeCase() // i_am_a_pascal_cased_string_123
+ "IAmAPascalCasedString123".toCase(CaseFormat.LOWER_UNDERSCORE)  // i_am_a_pascal_cased_string_123
+ "IAmAPascalCasedString123".toCase(to = CaseFormat.LOWER_UNDERSCORE, from = universalWordSplitter())  // i_am_a_pascal_cased_string_123
+ "IAmAPascalCasedString123".toSnakeCase(universalWordSplitter())  // i_am_a_pascal_cased_string_123
+ "IAmAPascalCasedString123".toCase(to = CaseFormat.LOWER_UNDERSCORE, from = universalWordSplitter(treatDigitsAsUppercase = false))  // i_am_a_pascal_cased_string123
+ "IAmAPascalCasedString123".toSnakeCase(universalWordSplitter(treatDigitsAsUppercase = false))  // i_am_a_pascal_cased_string123
+```
  - Transforming string from one case to another:
 ```kotlin
- "IAmAPascalCasedString".toSnakeCase() // i_am_a_pascal_cased_string
- "IAmAPascalCasedString".toCase(CaseFormat.LOWER_UNDERSCORE)  // i_am_a_pascal_cased_string
+ "123e4567-e89b-12d3-a456-426655440000".toSnakeCase(CaseFormat.LOWER_HYPHEN) // 123e4567_e89b_12d3_a456_426655440000
+ "123e4567-e89b-12d3-a456-426655440000".toCase(to = CaseFormat.LOWER_UNDERSCORE, from = CaseFormat.LOWER_HYPHEN)  // 123e4567_e89b_12d3_a456_426655440000
 ```
 - Transforming string to a custom case:
 ```kotlin
-"some_string".toCase(CaseFormatterConfigurable(CaseFormatterConfig(false, "..", wordCapitalize = true, firstWordCapitalize = true))) // Some..String
+"some_string".toCase(CaseFormatterConfig(false, "..", wordCapitalize = true, firstWordCapitalize = true)) // Some..String
 ```
- - Splitting a string into words:
+ - Splitting a string in any case into words:
 ```kotlin
  "XMLExtendedParser".splitToWords() // [XML, Extended, Parser]
+ "XMLExtendedParser2".splitToWords(universalWordSplitter(treatDigitsAsUppercase = true)) // [XML, Extended, Parser, 2]
+ "XMLExtendedParser2".splitToWords(universalWordSplitter(treatDigitsAsUppercase = false)) // [XML, Extended, Parser2]
+```
+ - Splitting a string in specific case into words:
+```kotlin
+ "s0meth1ng_in_snake_case".splitToWords(CaseFormat.LOWER_UNDERSCORE) // [s0meth1ng, in, snake, case]
 ```
