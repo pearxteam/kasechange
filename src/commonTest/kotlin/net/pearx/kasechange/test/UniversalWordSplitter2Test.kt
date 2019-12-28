@@ -57,17 +57,17 @@ class UniversalWordSplitter2Test {
 
     @Test
     fun testTitle() {
-        assertEquals(listOf("XML", "Request", "V2", "Updated"), "XML Request V2 Updated".splitToWords(universalWordSplitter(false)))
+        assertEquals(listOf("XML", "Http", "Request", "V2", "Updated"), "XML Http Request V2 Updated".splitToWords(universalWordSplitter(false)))
     }
 
     @Test
     fun testDot() {
-        assertEquals(listOf("xml", "request", "v2", "updated"), "xml.request.v2.updated".splitToWords(universalWordSplitter(false)))
+        assertEquals(listOf("xml", "http", "request", "v2", "updated"), "xml.http.request.v2.updated".splitToWords(universalWordSplitter(false)))
     }
 
     @Test
     fun testDotUpper() {
-        assertEquals(listOf("XML", "REQUEST", "V2", "UPDATED"), "XML.REQUEST.V2.UPDATED".splitToWords(universalWordSplitter(false)))
+        assertEquals(listOf("XML", "HTTP", "REQUEST", "V2", "UPDATED"), "XML.HTTP.REQUEST.V2.UPDATED".splitToWords(universalWordSplitter(false)))
     }
 
     @Test

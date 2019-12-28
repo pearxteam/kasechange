@@ -1,75 +1,69 @@
-/*
- * Copyright © 2019, PearX Team
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this file,
- * You can obtain one at https://mozilla.org/MPL/2.0/.
- */
-
 package net.pearx.kasechange.test
 
 import net.pearx.kasechange.*
 import net.pearx.kasechange.formatter.CaseFormatterConfig
+import net.pearx.kasechange.formatter.CaseFormatterConfigurable
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ComplexTest {
     @Test
     fun testCamel() {
-        assertEquals("someStringWith123Numbers", "Some String With 123 Numbers".toCamelCase())
+        assertEquals("xmlHttpRequestV2Updated", "xml_http_request_v2_updated".toCamelCase(CaseFormat.LOWER_UNDERSCORE))
     }
 
     @Test
     fun testPascal() {
-        assertEquals("SomeStringWith123Numbers", "Some String With 123 Numbers".toPascalCase())
+        assertEquals("XmlHttpRequestV2Updated", "xml_http_request_v2_updated".toPascalCase(CaseFormat.LOWER_UNDERSCORE))
     }
 
     @Test
     fun testSnake() {
-        assertEquals("some_string_with_123_numbers", "Some String With 123 Numbers".toSnakeCase())
+        assertEquals("xml_http_request_v2_updated", "XML_HTTP_REQUEST_V2_UPDATED".toSnakeCase(CaseFormat.UPPER_UNDERSCORE))
     }
 
     @Test
     fun testScreamingSnake() {
-        assertEquals("SOME_STRING_WITH_123_NUMBERS", "Some String With 123 Numbers".toScreamingSnakeCase())
+        assertEquals("XML_HTTP_REQUEST_V2_UPDATED", "xml_http_request_v2_updated".toScreamingSnakeCase(CaseFormat.LOWER_UNDERSCORE))
     }
 
     @Test
     fun testKebab() {
-        assertEquals("some-string-with-123-numbers", "Some String With 123 Numbers".toKebabCase())
+        assertEquals("xml-http-request-v2-updated", "xml_http_request_v2_updated".toKebabCase(CaseFormat.LOWER_UNDERSCORE))
     }
 
     @Test
     fun testTrain() {
-        assertEquals("SOME-STRING-WITH-123-NUMBERS", "Some String With 123 Numbers".toTrainCase())
+        assertEquals("XML-HTTP-REQUEST-V2-UPDATED", "xml_http_request_v2_updated".toTrainCase(CaseFormat.LOWER_UNDERSCORE))
     }
 
     @Test
     fun testLowerSpace() {
-        assertEquals("some string with 123 numbers", "Some String With 123 Numbers".toLowerSpaceCase())
+        assertEquals("xml http request v2 updated", "xml_http_request_v2_updated".toLowerSpaceCase(CaseFormat.LOWER_UNDERSCORE))
     }
 
     @Test
     fun testUpperSpace() {
-        assertEquals("SOME STRING WITH 123 NUMBERS", "Some String With 123 Numbers".toUpperSpaceCase())
+        assertEquals("XML HTTP REQUEST V2 UPDATED", "xml_http_request_v2_updated".toUpperSpaceCase(CaseFormat.LOWER_UNDERSCORE))
     }
 
     @Test
     fun testTitle() {
-        assertEquals("Some String With 123 Numbers", "some string with 123 numbers".toTitleCase())
+        assertEquals("Xml Http Request V2 Updated", "xml_http_request_v2_updated".toTitleCase(CaseFormat.LOWER_UNDERSCORE))
     }
 
     @Test
     fun testDot() {
-        assertEquals("some.string.with.123.numbers", "Some String With 123 Numbers".toDotCase())
+        assertEquals("xml.http.request.v2.updated", "xml_http_request_v2_updated".toDotCase(CaseFormat.LOWER_UNDERSCORE))
     }
 
     @Test
     fun testDotUpper() {
-        assertEquals("SOME.STRING.WITH.123.NUMBERS", "Some String With 123 Numbers".toUpperDotCase())
+        assertEquals("XML.HTTP.REQUEST.V2.UPDATED", "xml_http_request_v2_updated".toUpperDotCase(CaseFormat.LOWER_UNDERSCORE))
     }
 
     @Test
-    fun testConfig() {
-        assertEquals("Some..String..With..123..Numbers", "Some String With 123 Numbers".toCase(CaseFormatterConfig(false, "..", wordCapitalize = true, firstWordCapitalize = true)))
+    fun testMulti1() {
+        assertEquals("My**Xml**Request**V2**Updated", "MY XML-REQUEST.V2_UPDATED".toCase(CaseFormatterConfig(false, "**", wordCapitalize = true, firstWordCapitalize = true), universalWordSplitter(false)))
     }
 }
