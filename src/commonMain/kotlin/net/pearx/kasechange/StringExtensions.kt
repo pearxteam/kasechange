@@ -68,3 +68,8 @@ fun String.toDotCase(from: WordSplitter = universalWordSplitter()) = toCase(Case
  * Splits this string into multiple words using [specified][splitter] [WordSplitter] and returns a list of words.
  */
 fun String.splitToWords(splitter: WordSplitter = universalWordSplitter()) = splitter.splitToWords(this)
+
+/**
+ * Splits this string into multiple words using [WordSplitterConfigurable] configured with [config] and returns a list of words.
+ */
+fun String.splitToWords(config: WordSplitterConfig) = splitToWords(WordSplitterConfigurable(config))
