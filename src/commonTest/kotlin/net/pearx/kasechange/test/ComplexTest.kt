@@ -3,6 +3,8 @@ package net.pearx.kasechange.test
 import net.pearx.kasechange.*
 import net.pearx.kasechange.formatter.CaseFormatterConfig
 import net.pearx.kasechange.formatter.CaseFormatterConfigurable
+import net.pearx.kasechange.splitter.WordSplitter
+import net.pearx.kasechange.splitter.WordSplitterConfig
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -63,7 +65,17 @@ class ComplexTest {
     }
 
     @Test
-    fun testMulti1() {
+    fun testCustom1() {
         assertEquals("My**Xml**Request**V2**Updated", "MY XML-REQUEST.V2_UPDATED".toCase(CaseFormatterConfig(false, "**", wordCapitalize = true, firstWordCapitalize = true), universalWordSplitter(false)))
+    }
+
+    @Test
+    fun testCustom2() {
+        assertEquals("My**Xml**Request**V2**Updated", "MY_XML_REQUEST_V2_UPDATED".toCase(CaseFormatterConfig(false, "**", wordCapitalize = true, firstWordCapitalize = true), CaseFormat.UPPER_UNDERSCORE))
+    }
+
+    @Test
+    fun testCustom3() {
+        assertEquals("My**Xml**Request**V2**Updated", "my*xml*request*v2*updated".toCase(CaseFormatterConfig(false, "**", wordCapitalize = true, firstWordCapitalize = true), WordSplitterConfig(boundaries = setOf('*'))))
     }
 }
