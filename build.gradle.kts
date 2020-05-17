@@ -101,13 +101,17 @@ configure<PublishingExtension> {
 }
 
 tasks {
-    register("publishDevelop") {
+    val publishDevelop by registering {
         group = "publishing"
         dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-develop") })
     }
-    register("publishRelease") {
+    val publishRelease by registering {
         group = "publishing"
         dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-release") })
+    }
+    val release by registering {
+        group = "publishing"
+        dependsOn(publishRelease)
         dependsOn(named("githubRelease"))
     }
 }

@@ -71,4 +71,4 @@ jobs:
         shell: bash
         env:
           PGP_KEY_PRIVATE: ${{secrets.S_PGP_KEY_PRIVATE}}
-      - run: './gradlew --no-daemon publishRelease -PdevBuildNumber=${{ github.run_number }} -PpearxRepoUsername=${{ secrets.S_PEARX_REPO_USERNAME }} -PpearxRepoPassword=${{ secrets.S_PEARX_REPO_PASSWORD }} -Psigning.keyId=${{ secrets.S_PGP_KEY_PUBID }} -Psigning.password="${{ secrets.S_PGP_KEY_PASSWORD }}" -Psigning.secretKeyRingFile=private.key -PgithubAccessToken="${{ secrets.S_GITHUB_RELEASE_TOKEN }}" -PsonatypeOssUsername="${{ secrets.S_SONATYPE_OSS_USERNAME }}" -PsonatypeOssPassword="${{ secrets.S_SONATYPE_OSS_PASSWORD }}"'
+      - run: './gradlew --no-daemon release -PdevBuildNumber=${{ github.run_number }} -PpearxRepoUsername=${{ secrets.S_PEARX_REPO_USERNAME }} -PpearxRepoPassword=${{ secrets.S_PEARX_REPO_PASSWORD }} -Psigning.keyId=${{ secrets.S_PGP_KEY_PUBID }} -Psigning.password="${{ secrets.S_PGP_KEY_PASSWORD }}" -Psigning.secretKeyRingFile=private.key -PgithubAccessToken="${{ secrets.S_GITHUB_RELEASE_TOKEN }}" -PsonatypeOssUsername="${{ secrets.S_SONATYPE_OSS_USERNAME }}" -PsonatypeOssPassword="${{ secrets.S_SONATYPE_OSS_PASSWORD }}"'
