@@ -9,7 +9,6 @@ package net.pearx.kasechange.test
 
 import net.pearx.kasechange.CaseFormat
 import net.pearx.kasechange.splitToWords
-import net.pearx.kasechange.splitter.WordSplitter
 import net.pearx.kasechange.splitter.WordSplitterConfig
 import kotlin.test.Test
 import kotlin.test.assertEquals

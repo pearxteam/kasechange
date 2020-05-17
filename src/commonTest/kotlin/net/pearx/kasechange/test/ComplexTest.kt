@@ -9,8 +9,6 @@ package net.pearx.kasechange.test
 
 import net.pearx.kasechange.*
 import net.pearx.kasechange.formatter.CaseFormatterConfig
-import net.pearx.kasechange.formatter.CaseFormatterConfigurable
-import net.pearx.kasechange.splitter.WordSplitter
 import net.pearx.kasechange.splitter.WordSplitterConfig
 import kotlin.test.Test
 import kotlin.test.assertEquals

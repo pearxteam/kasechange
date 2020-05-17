@@ -7,8 +7,6 @@
 
 package net.pearx.kasechange.test
 
-import net.pearx.kasechange.formatter.CaseFormatterConfig
-import net.pearx.kasechange.toCase
 import net.pearx.kasechange.splitToWords
 import net.pearx.kasechange.universalWordSplitter
 import kotlin.test.Test
