@@ -20,22 +20,44 @@ Multiplatform Kotlin library to convert strings between various case formats
 - dot.case
 
 # Setup
-1. Add the lib to your project's dependencies by copying one of the following lines depending on the platform: 
- - Groovy (replace `$kasechange_version` with the version you want):
+1. Add the lib to your project's dependencies:
+
+* Groovy (replace `$kasechange_version` with the version you want):
 ```groovy
+ // universal dependency for Gradle 5.3 and above
+ // in case of multiplatform project, just specify the dependency for commonMain/commonTest source set
+ implementation "net.pearx.kasechange:kasechange:$kasechange_version" 
+```
+```kotlin
+ // for Gradle versions below 5.3:
  implementation "net.pearx.kasechange:kasechange-metadata:$kasechange_version" // for Common
  // or
  implementation "net.pearx.kasechange:kasechange-jvm:$kasechange_version" // for JVM
  // or
  implementation "net.pearx.kasechange:kasechange-js:$kasechange_version" // for JS
+ // or
+ implementation "net.pearx.kasechange:kasechange-android:$kasechange_version" // for Android
+ // or
+ implementation "net.pearx.kasechange:kasechange-PLATFORM_YOU_WANT:$kasechange_version" // for Native
 ```
- - Kotlin (replace `$kasechangeVersion` with the version you want):
+
+* Kotlin (replace `$kasechangeVersion` with the version you want):
 ```kotlin
+ // universal dependency for Gradle 5.3 and above
+ // in case of multiplatform project, just specify the dependency for commonMain/commonTest source set
+ implementation("net.pearx.kasechange:kasechange:$kasechangeVersion") 
+```
+```kotlin
+ // for Gradle versions below 5.3:
  implementation("net.pearx.kasechange:kasechange-metadata:$kasechangeVersion") // for Common
  // or
  implementation("net.pearx.kasechange:kasechange-jvm:$kasechangeVersion") // for JVM
  // or
  implementation("net.pearx.kasechange:kasechange-js:$kasechangeVersion") // for JS
+ // or
+ implementation("net.pearx.kasechange:kasechange-android:$kasechangeVersion") // for Android
+ // or
+ implementation("net.pearx.kasechange:kasechange-PLATFORM_YOU_WAN:$kasechangeVersion") // for Native
 ```
 2. Use the library and have fun!
 # Examples:
