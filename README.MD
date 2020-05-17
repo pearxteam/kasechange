@@ -1,4 +1,4 @@
-# KaseChange [![Maven Central](https://img.shields.io/maven-central/v/net.pearx.kasechange/kasechange.svg?label=version&logo=kotlin&logoColor=white)](https://search.maven.org/search?q=g:%22net.pearx.kasechange%22%20AND%20a:%22kasechange%22)
+# KaseChange [![Maven Central](https://img.shields.io/maven-central/v/net.pearx.kasechange/kasechange.svg?label=version&logo=kotlin&logoColor=white)](https://search.maven.org/search?q=g:%22net.pearx.kasechange%22%20AND%20a:%22kasechange%22) [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
 [![License](https://img.shields.io/github/license/pearxteam/kasechange.svg)](https://raw.githubusercontent.com/pearxteam/kasechange/master/LICENSE.TXT)
 [![Discord](https://img.shields.io/discord/136085738151346176.svg?logo=discord&logoColor=white)](https://discord.gg/q9cX9QE)
 ![Test & Deploy | develop](https://github.com/pearxteam/kasechange/workflows/Test%20&%20Deploy%20%7C%20develop/badge.svg?branch=develop)
@@ -18,7 +18,7 @@ Multiplatform Kotlin library to convert strings between various case formats
 - lower space case
 - UPPER.DOT.CASE
 - dot.case
-- custom :)
+- custom one :)
 
 # Setup
 1. Add the lib to your project's dependencies:
