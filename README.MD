@@ -1,8 +1,8 @@
-# KaseChange [![Maven Central](https://img.shields.io/maven-central/v/net.pearx.kasechange/kasechange-metadata.svg?label=common&logo=kotlin&logoColor=white)](https://search.maven.org/search?q=g:%22net.pearx.kasechange%22%20AND%20a:%22kasechange-metadata%22) [![Maven Central](https://img.shields.io/maven-central/v/net.pearx.kasechange/kasechange-jvm.svg?label=jvm&logo=java&logoColor=white)](https://search.maven.org/search?q=g:%22net.pearx.kasechange%22%20AND%20a:%22kasechange-jvm%22) [![Maven Central](https://img.shields.io/maven-central/v/net.pearx.kasechange/kasechange-js.svg?label=js&logo=javascript&logoColor=white)](https://search.maven.org/search?q=g:%22net.pearx.kasechange%22%20AND%20a:%22kasechange-js%22)
+# KaseChange [![Maven Central](https://img.shields.io/maven-central/v/net.pearx.kasechange/kasechange.svg?label=version&logo=kotlin&logoColor=white)](https://search.maven.org/search?q=g:%22net.pearx.kasechange%22%20AND%20a:%22kasechange%22)
 [![License](https://img.shields.io/github/license/pearxteam/kasechange.svg)](https://raw.githubusercontent.com/pearxteam/kasechange/master/LICENSE.TXT)
 [![Discord](https://img.shields.io/discord/136085738151346176.svg?logo=discord&logoColor=white)](https://discord.gg/q9cX9QE)
-[![Release Build Status](https://img.shields.io/jenkins/build/https/ci.pearx.net/job/pearxteam/job/kasechange/job/master.svg?label=build%20%5Bmaster%5D&logo=jenkins&logoColor=white)](https://ci.pearx.net/job/pearxteam/job/kasechange/job/master/)
-[![Develop Build Status](https://img.shields.io/jenkins/build/https/ci.pearx.net/job/pearxteam/job/kasechange/job/develop.svg?label=build%20%5Bdevelop%5D&logo=jenkins&logoColor=white)](https://ci.pearx.net/job/pearxteam/job/kasechange/job/develop/)
+![Test & Deploy | develop](https://github.com/pearxteam/kasechange/workflows/Test%20&%20Deploy%20%7C%20develop/badge.svg?branch=develop)
+![Test & Deploy | master](https://github.com/pearxteam/kasechange/workflows/Test%20&%20Deploy%20%7C%20master/badge.svg?branch=master)
 
 Multiplatform Kotlin library to convert strings between various case formats
 
@@ -18,6 +18,7 @@ Multiplatform Kotlin library to convert strings between various case formats
 - lower space case
 - UPPER.DOT.CASE
 - dot.case
+- custom :)
 
 # Setup
 1. Add the lib to your project's dependencies:
