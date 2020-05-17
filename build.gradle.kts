@@ -13,7 +13,7 @@ val devBuildNumber: String? by project
 
 plugins {
     id("net.pearx.multigradle.simple.project")
-    id("kotlin-gradle-plugin") apply (false)
+    id("org.jetbrains.kotlin.multiplatform") apply (false)
     id("com.github.breadmoirai.github-release")
     `maven-publish`
     signing
