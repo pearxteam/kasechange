@@ -59,6 +59,7 @@ Multiplatform Kotlin library to convert strings between various case formats
  // or
  implementation("net.pearx.kasechange:kasechange-PLATFORM_YOU_WAN:$kasechangeVersion") // for Native
 ```
+
 2. Use the library and have fun!
 # Examples:
  - Transforming string from any case to specific one:
