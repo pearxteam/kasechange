@@ -34,6 +34,8 @@ enum class CaseFormat(caseFormatterConfig: CaseFormatterConfig, wordSplitterConf
     UPPER_SPACE(CaseFormatterConfig(true, " "), WordSplitterConfig(setOf(' '))),
     /** Title Case */
     CAPITALIZED_SPACE(CaseFormatterConfig(false, " ", wordCapitalize = true, firstWordCapitalize = true), WordSplitterConfig(setOf(' '))),
+    /** Sentence case */
+    SENTENCE_SPACE(CaseFormatterConfig(false, " ", wordCapitalize = false, firstWordCapitalize = true), WordSplitterConfig(setOf(' '))),
     /** lower space case */
     LOWER_SPACE(CaseFormatterConfig(false, " "), WordSplitterConfig(setOf(' '))),
     /** UPPER.DOT.CASE */

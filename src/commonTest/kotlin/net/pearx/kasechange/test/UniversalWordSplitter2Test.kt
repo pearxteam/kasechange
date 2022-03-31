@@ -59,6 +59,11 @@ class UniversalWordSplitter2Test {
     }
 
     @Test
+    fun testSentence() {
+        assertEquals(listOf("Xml", "http", "request", "v2", "updated"), "Xml http request v2 updated".splitToWords(universalWordSplitter(false)))
+    }
+
+    @Test
     fun testDot() {
         assertEquals(listOf("xml", "http", "request", "v2", "updated"), "xml.http.request.v2.updated".splitToWords(universalWordSplitter(false)))
     }

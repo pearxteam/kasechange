@@ -54,6 +54,9 @@ fun String.toUpperSpaceCase(from: WordSplitter = universalWordSplitter()) = toCa
 /** Returns a copy of this string converted to Title Case by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.CAPITALIZED_SPACE].. */
 fun String.toTitleCase(from: WordSplitter = universalWordSplitter()) = toCase(CaseFormat.CAPITALIZED_SPACE, from)
 
+/** Returns a copy of this string converted to Sentence case by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.SENTENCE_SPACE].. */
+fun String.toSentenceCase(from: WordSplitter = universalWordSplitter()) = toCase(CaseFormat.SENTENCE_SPACE, from)
+
 /** Returns a copy of this string converted to lower space case by splitting it into multiple words using [specified][from] [WordSplitter] and joining them using [CaseFormat.LOWER_SPACE].. */
 fun String.toLowerSpaceCase(from: WordSplitter = universalWordSplitter()) = toCase(CaseFormat.LOWER_SPACE, from)
 
