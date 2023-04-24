@@ -60,6 +60,11 @@ class ComplexTest {
     }
 
     @Test
+    fun testSentence() {
+        assertEquals("Xml http request v2 updated", "xml_http_request_v2_updated".toSentenceCase(CaseFormat.LOWER_UNDERSCORE))
+    }
+
+    @Test
     fun testDot() {
         assertEquals("xml.http.request.v2.updated", "xml_http_request_v2_updated".toDotCase(CaseFormat.LOWER_UNDERSCORE))
     }

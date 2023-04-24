@@ -62,6 +62,11 @@ class CaseFormatterTest {
     }
 
     @Test
+    fun testSentence() {
+        assertEquals("Xml http request v2 updated", CaseFormat.SENTENCE_SPACE.format("XmL", "http", "reQuEST", "v2", "Updated"))
+    }
+
+    @Test
     fun testDot() {
         assertEquals("xml.http.request.v2.updated", CaseFormat.LOWER_DOT.format("XML", "http", "reQuEST", "V2", "Updated"))
     }

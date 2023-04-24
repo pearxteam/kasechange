@@ -15,6 +15,7 @@ Multiplatform Kotlin library to convert strings between various case formats
 - kebab-case
 - UPPER SPACE CASE
 - Title Case
+- Sentence case
 - lower space case
 - UPPER.DOT.CASE
 - dot.case

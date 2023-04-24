@@ -60,6 +60,11 @@ class WordSplitterTest {
     }
 
     @Test
+    fun testSentence() {
+        assertEquals(listOf("Xml", "request", "v2", "updated"), "Xml request v2 updated".splitToWords(CaseFormat.CAPITALIZED_SPACE))
+    }
+
+    @Test
     fun testDot() {
         assertEquals(listOf("xml", "request", "v2", "updated"), "xml.request.v2.updated".splitToWords(CaseFormat.LOWER_DOT))
     }
