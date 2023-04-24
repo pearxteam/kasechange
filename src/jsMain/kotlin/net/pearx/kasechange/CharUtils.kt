@@ -7,8 +7,8 @@
 
 package net.pearx.kasechange
 
-internal actual fun Char.isUpperCasePlatform(): Boolean = toUpperCase() == this && toLowerCase() != this
+internal actual fun Char.isUpperCasePlatform(): Boolean = uppercaseChar() == this && lowercaseChar() != this
 
-internal actual fun Char.isLowerCasePlatform(): Boolean = toLowerCase() == this && toUpperCase() != this
+internal actual fun Char.isLowerCasePlatform(): Boolean = lowercaseChar() == this && uppercaseChar() != this
 
 internal actual fun Char.isDigitPlatform(): Boolean = this in '0'..'9'

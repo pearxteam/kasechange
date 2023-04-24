@@ -4,12 +4,14 @@ import net.pearx.multigradle.util.MultiGradleExtension
 val projectChangelog: String by project
 val projectDescription: String by project
 
-val pearxRepoUsername: String? by project
-val pearxRepoPassword: String? by project
 val sonatypeOssUsername: String? by project
 val sonatypeOssPassword: String? by project
 val githubAccessToken: String? by project
 val devBuildNumber: String? by project
+
+
+description = projectDescription
+
 
 plugins {
     id("net.pearx.multigradle.simple.project")
@@ -18,9 +20,6 @@ plugins {
     `maven-publish`
     signing
 }
-
-group = "net.pearx.kasechange"
-description = projectDescription
 
 configure<MultiGradleExtension> {
     if (devBuildNumber != null) {
@@ -66,29 +65,9 @@ configure<PublishingExtension> {
                 system.set("GitHub")
                 url.set("https://github.com/pearxteam/kasechange/issues")
             }
-            ciManagement {
-                system.set("Jenkins")
-                url.set("https://ci.pearx.net/job/pearxteam/job/kasechange")
-            }
         }
     }
     repositories {
-        maven {
-            credentials {
-                username = pearxRepoUsername
-                password = pearxRepoPassword
-            }
-            name = "pearx-repo-develop"
-            url = uri("https://repo.pearx.net/maven2/develop/")
-        }
-        maven {
-            credentials {
-                username = pearxRepoUsername
-                password = pearxRepoPassword
-            }
-            name = "pearx-repo-release"
-            url = uri("https://repo.pearx.net/maven2/release/")
-        }
         maven {
             credentials {
                 username = sonatypeOssUsername

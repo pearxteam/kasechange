@@ -40,15 +40,15 @@ class CaseFormatterConfigurable(private val config: CaseFormatterConfig) : CaseF
                 if (config.wordSplitter != null && index != 0)
                     append(config.wordSplitter)
                 append(when {
-                    config.wordUppercase -> word.toUpperCase()
+                    config.wordUppercase -> word.uppercase()
                     index == 0 -> {
                         when {
-                            config.firstWordCapitalize -> word.toLowerCase().capitalize()
-                            else -> word.toLowerCase()
+                            config.firstWordCapitalize -> word.lowercase().replaceFirstChar { it.titlecase() }
+                            else -> word.lowercase()
                         }
                     }
-                    config.wordCapitalize -> word.toLowerCase().capitalize()
-                    else -> word.toLowerCase()
+                    config.wordCapitalize -> word.lowercase().replaceFirstChar { it.titlecase() }
+                    else -> word.lowercase()
                 })
             }
         }
