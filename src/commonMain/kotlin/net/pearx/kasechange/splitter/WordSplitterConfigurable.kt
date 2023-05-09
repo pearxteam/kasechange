@@ -7,10 +7,6 @@
 
 package net.pearx.kasechange.splitter
 
-import net.pearx.kasechange.isDigitPlatform
-import net.pearx.kasechange.isLowerCasePlatform
-import net.pearx.kasechange.isUpperCasePlatform
-
 /**
  * A configuration class for [WordSplitterConfigurable].
  */
@@ -63,7 +59,7 @@ class WordSplitterConfigurable(private val config: WordSplitterConfig) : WordSpl
     private fun StringBuilder.toStringAndClear() = toString().also { clear() }
 
     private fun Char.isDigitOrUpperCase(treatDigitsAsUppercase: Boolean): Boolean =
-        (treatDigitsAsUppercase && isDigitPlatform()) || isUpperCasePlatform()
+        (treatDigitsAsUppercase && isDigit()) || isUpperCase()
 
-    private fun Char.isDigitOrLowerCase(treatDigitsAsUppercase: Boolean): Boolean = (!treatDigitsAsUppercase && isDigitPlatform()) || isLowerCasePlatform()
+    private fun Char.isDigitOrLowerCase(treatDigitsAsUppercase: Boolean): Boolean = (!treatDigitsAsUppercase && isDigit()) || isLowerCase()
 }
