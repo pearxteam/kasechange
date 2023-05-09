@@ -70,6 +70,14 @@ configure<PublishingExtension> {
     repositories {
         maven {
             credentials {
+                username = "pearxteam"
+                password = githubAccessToken
+            }
+            name = "github-all"
+            url = uri("https://maven.pkg.github.com/pearxteam/kasechange")
+        }
+        maven {
+            credentials {
                 username = sonatypeOssUsername
                 password = sonatypeOssPassword
             }
@@ -82,11 +90,11 @@ configure<PublishingExtension> {
 tasks {
     val publishDevelop by registering {
         group = "publishing"
-        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-develop") })
+        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-develop") or it.repository.name.endsWith("-all") })
     }
     val publishRelease by registering {
         group = "publishing"
-        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-release") })
+        dependsOn(withType<PublishToMavenRepository>().matching { it.repository.name.endsWith("-release") or it.repository.name.endsWith("-all") })
     }
     val release by registering {
         group = "publishing"
