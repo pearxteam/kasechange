@@ -30,7 +30,7 @@ jobs:
         shell: bash
         env:
           PGP_KEY_PRIVATE: ${{secrets.S_PGP_KEY_PRIVATE}}
-      - run: './gradlew --no-daemon publishDevelop -PdevBuildNumber=${{ github.run_number }} -PpearxRepoUsername=${{ secrets.S_PEARX_REPO_USERNAME }} -PpearxRepoPassword=${{ secrets.S_PEARX_REPO_PASSWORD }} -Psigning.keyId=${{ secrets.S_PGP_KEY_PUBID }} -Psigning.password="${{ secrets.S_PGP_KEY_PASSWORD }}" -Psigning.secretKeyRingFile=private.key -Pmultigradle.publishHostExclusivesOnly=true'
+      - run: './gradlew --no-daemon publishDevelop -PdevBuildNumber=${{ github.run_number }} -Psigning.keyId=${{ secrets.S_PGP_KEY_PUBID }} -Psigning.password="${{ secrets.S_PGP_KEY_PASSWORD }}" -PgithubAccessToken="${{ secrets.S_GITHUB_RELEASE_TOKEN }}" -Psigning.secretKeyRingFile=private.key -Pmultigradle.publishHostExclusivesOnly=true'
   check_deploy_windows:
     runs-on: windows-latest
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
@@ -56,7 +56,7 @@ jobs:
         shell: bash
         env:
           PGP_KEY_PRIVATE: ${{secrets.S_PGP_KEY_PRIVATE}}
-      - run: 'CALL gradlew.bat --no-daemon publishDevelop -PdevBuildNumber=${{ github.run_number }} -PpearxRepoUsername=${{ secrets.S_PEARX_REPO_USERNAME }} -PpearxRepoPassword=${{ secrets.S_PEARX_REPO_PASSWORD }} -Psigning.keyId=${{ secrets.S_PGP_KEY_PUBID }} -Psigning.password="${{ secrets.S_PGP_KEY_PASSWORD }}" -Psigning.secretKeyRingFile=private.key -Pmultigradle.publishHostExclusivesOnly=true'
+      - run: 'CALL gradlew.bat --no-daemon publishDevelop -PdevBuildNumber=${{ github.run_number }} -Psigning.keyId=${{ secrets.S_PGP_KEY_PUBID }} -Psigning.password="${{ secrets.S_PGP_KEY_PASSWORD }}" -PgithubAccessToken="${{ secrets.S_GITHUB_RELEASE_TOKEN }}" -Psigning.secretKeyRingFile=private.key -Pmultigradle.publishHostExclusivesOnly=true'
         shell: cmd
   check_deploy_linux:
     runs-on: ubuntu-latest
@@ -83,4 +83,4 @@ jobs:
         shell: bash
         env:
           PGP_KEY_PRIVATE: ${{secrets.S_PGP_KEY_PRIVATE}}
-      - run: './gradlew --no-daemon publishDevelop -PdevBuildNumber=${{ github.run_number }} -PpearxRepoUsername=${{ secrets.S_PEARX_REPO_USERNAME }} -PpearxRepoPassword=${{ secrets.S_PEARX_REPO_PASSWORD }} -Psigning.keyId=${{ secrets.S_PGP_KEY_PUBID }} -Psigning.password="${{ secrets.S_PGP_KEY_PASSWORD }}" -Psigning.secretKeyRingFile=private.key'
+      - run: './gradlew --no-daemon publishDevelop -PdevBuildNumber=${{ github.run_number }} -Psigning.keyId=${{ secrets.S_PGP_KEY_PUBID }} -PgithubAccessToken="${{ secrets.S_GITHUB_RELEASE_TOKEN }}" -Psigning.password="${{ secrets.S_PGP_KEY_PASSWORD }}" -Psigning.secretKeyRingFile=private.key'
